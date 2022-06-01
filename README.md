@@ -14,8 +14,8 @@
 
 #### FPGA and FPGA Architecture
 
-Programmable Logic Devices
-The hardware can be customized after the manufacturing by programming the device
+Programmable Logic Devices.
+- The hardware can be customized after the manufacturing by programming the device
 - PLA - Produces Minterms, Variable AND Gates, Input to OR Gates is fixed. But sequential elements cannot be programmed using this
 - CPLD - Complex Programmable Logic Devices
 - FPGA - Field Programmable Gate Arrays
