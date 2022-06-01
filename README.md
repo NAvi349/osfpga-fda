@@ -67,7 +67,7 @@ An FPGA Architecture consists of
 
 ## Acknowledgements
 
-- Dr. Xifan tang, OpenFPGA and Chief Engineer RapidSilicon
+- Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
 
 
 
