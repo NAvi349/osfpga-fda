@@ -1,9 +1,6 @@
 
 ## Day 1
 
-
-
-
 ### FPGA Introduction
 
 #### Flow
@@ -113,8 +110,7 @@ graph TD;
 
 <details>
 <summary> Code </summary>
-
-```
+	
 module counter(clk,reset,count);
 input clk,reset;
 output reg [3:0] count = 4'b0000;
@@ -151,10 +147,10 @@ else
 		 end
 	 end
 endmodule
-```
-	
+			    
 </details>
-
+			    
+			    
 ### Vivado-counter example
 
 
