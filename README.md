@@ -50,7 +50,7 @@ An FPGA Architecture consists of
 	* Basically a function can be expressed as Sum of Products form or Sum of Minterms form.
 	* If we want to implement a logic function, the corresponding minterms of the function are selected by using the Mux.
 	* The output of the Mux feeds into the Flip Flop.
-- **Configurable **
+- **Configurable**
 
 
 
