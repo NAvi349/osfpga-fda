@@ -45,9 +45,12 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 An FPGA Architecture consists of
 
 - **Configurable Logic Blocks** 
-    * They contain N-input Lookup Tables, Multiplexer and Flip Flop. 
-    * If we want to implement a logic function, the corresponding
-
+	* It contains an N-input Lookup Tables, Multiplexer and a Flip Flop. 
+	* The Lookup table consists of all the possible minterms of a N-input function.
+	* Basically a function can be expressed as Sum of Products form or Sum of Minterms form.
+	* If we want to implement a logic function, the corresponding minterms of the function are selected by using the Mux.
+	* The output of the Mux feeds into the Flip Flop.
+- **Configurable **
 
 
 
