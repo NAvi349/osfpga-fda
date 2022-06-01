@@ -163,10 +163,25 @@ iii. Do the following settings
 iv. Click finish.
 
 v. Add source files
-
-
-
+	- Set the testbench as top module while during Behavioural Simulation
 	
+vi. Run Behavioural Simulation
+	
+![image](https://user-images.githubusercontent.com/66086031/171450253-86659bb2-df54-46eb-b6f3-3fe1002653a6.png)
+	- The output counter gets incremented at every posedge of the slow clock
+	- This is the schematic
+	
+
+
+vii. Now set the design as top unit (not the testbench)
+
+vii. Run Elaboration
+	
+![image](https://user-images.githubusercontent.com/66086031/171451066-98f58c80-6b86-4122-8c85-d03cded110b7.png)
+	
+viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` file.
+	
+![image](https://user-images.githubusercontent.com/66086031/171456354-6d0a8618-f350-4a66-a733-466b4fa77227.png)
 
 			    
 
