@@ -182,8 +182,38 @@ vii. Run Elaboration
 viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` file.
 	
 ![image](https://user-images.githubusercontent.com/66086031/171456676-0166c665-f6ec-439f-b8ea-9f144d7cb4e1.png)
+![image](https://user-images.githubusercontent.com/66086031/171457762-be279c03-ed55-4ecb-8c16-7d7a5545ebed.png)
 
-    
+#### Static Timing Analysis
+	
+##### Setup Time (Max. Delay) Constraints
+
+![image](https://user-images.githubusercontent.com/66086031/166118620-dd932eef-2e14-4689-a24d-d1e1e2098bcb.png)
+
+- The data should be available **Tsetup**  before the **capturing clock edge** comes.
+- We need **fast cells** to satisfy **Max Delay** constraints.
+- Setup time constraints are always calculated with respect to the next clock edge.
+
+##### Hold Time (Min. Delay) Constraints
+
+![image](https://user-images.githubusercontent.com/66086031/166118808-82e6ff9a-34c3-4cbc-b40a-23cc1f2faa43.png)
+
+- Data should be stable for **T-hold** after the clock edge to be captured properly.
+- If the next data comes **earlier than T-hold**, the current data will not be captured properly.
+- We need **slow cells** to satisfy **hold time** constraints
+
+##### Setup Slack
+
+- Setup slack = Required Arrival Time(Clock setup time) - Arrival Time (Data)
+- Delay in clock helps us
+- Delay in data is not feasible here
+
+##### Hold Slack
+
+- Hold Slack = Arrival Time(Data) - Required Arrival Time(hold time of FF)
+- Here delay in data is helpful
+- But delay is clock is not desirable.
+	
 ### Virtual Input/Output Counter
 
 
