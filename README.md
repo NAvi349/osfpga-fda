@@ -109,8 +109,8 @@ graph TD;
 - We use a frequency synthesizer to generate a slow clock to observe the outputs
 
 <details>
-	
-```verilog		
+	<summary> Code </summary>
+		
 module counter(clk,reset,count);
 input clk,reset;
 output reg [3:0] count = 4'b0000;
@@ -143,18 +143,28 @@ else
 		 end
 		 else
 		 begin
-		    count <= count + 1;
+		    count <= count + 1'b1;
 		 end
 	 end
 endmodule			    
-```		
-			    
+	
 </details>
 			    
 			    
 ### Vivado-counter example
 
+#### 
+i. Type ```vivado``` in the terminal.
+	
+ii. Create a new project.
 
+iii. Do the following settings
+![image](https://user-images.githubusercontent.com/66086031/171430681-824be24d-7f03-4c07-82f8-d7fe3da126c9.png)
+	
+iv. Click finish.
+	
+
+			    
 
 ### Virtual Input/Output Counter
 
