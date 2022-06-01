@@ -153,7 +153,6 @@ endmodule
 			    
 ### Vivado-counter example
 
-#### 
 i. Type ```vivado``` in the terminal.
 	
 ii. Create a new project.
@@ -162,6 +161,11 @@ iii. Do the following settings
 ![image](https://user-images.githubusercontent.com/66086031/171430681-824be24d-7f03-4c07-82f8-d7fe3da126c9.png)
 	
 iv. Click finish.
+
+v. Add source files
+
+
+
 	
 
 			    
