@@ -169,15 +169,13 @@ vi. Run Behavioural Simulation
 	
 ![image](https://user-images.githubusercontent.com/66086031/171450253-86659bb2-df54-46eb-b6f3-3fe1002653a6.png)
 	- The output counter gets incremented at every posedge of the slow clock
-	- This is the schematic
-
 
 
 vii. Now set the design as top unit (not the testbench)
 
 vii. Run Elaboration
 	
-![image](https://user-images.githubusercontent.com/66086031/171463668-0e699f30-7041-46b6-8045-74efcd345406.png)
+![image](https://user-images.githubusercontent.com/66086031/171467301-0a08fd2e-4885-4799-928c-e92d318f9d98.png)
 
 	
 viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` file.
@@ -216,11 +214,36 @@ viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` fil
 - But delay in clock is not desirable.
 	
 #### Synthesis
-- Now run synthesis.
 	
+i. Now run synthesis.
+	
+![image](https://user-images.githubusercontent.com/66086031/171467889-c8af77a8-afbb-4dc3-946d-716d4f58f411.png)
+	
+ii. Primary clock is selected.
+![image](https://user-images.githubusercontent.com/66086031/171468421-019040e0-79d6-4cd5-9d03-bb461236fee5.png)
 
+iii. No generated clock.
+![image](https://user-images.githubusercontent.com/66086031/171468376-cb623b4e-9e5c-4e0f-9090-13b4ddf79c09.png)
 
-- Since timing constraints are not specified, it will not report the timing information.
+iv Skip to finish.
+	
+![image](https://user-images.githubusercontent.com/66086031/171469728-0ce56443-9bd6-4b9e-87b9-9c2078ba1f04.png)
+
+v. Synthesized netlist
+![image](https://user-images.githubusercontent.com/66086031/171469881-59dc363f-2522-42f6-b6b9-eef91c4f4adb.png)
+
+#### Implementation
+	
+![image](https://user-images.githubusercontent.com/66086031/171471188-822fe88a-b3af-4e42-ab06-2e84c8b0c89a.png)
+
+##### Resource Utilization
+
+![image](https://user-images.githubusercontent.com/66086031/171471394-19abdedc-9766-4c3d-abb8-03319d8219f1.png)
+
+#### Bit Stream
+![image](https://user-images.githubusercontent.com/66086031/171472464-638031c6-4830-413a-8d9a-3781c7008b27.png)
+	
+	
 ### Virtual Input/Output Counter
 
 
