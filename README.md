@@ -39,7 +39,14 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 #### FPGA Architecture
 
 ![image](https://user-images.githubusercontent.com/66086031/171312512-8e650388-62ec-40c5-9e9d-f9fd99baa14f.png)
+
 (Diagram taken from Course Slide for reference)
+
+An FPGA Architecture consists of
+
+- **Configurable Logic Blocks** 
+ * They contain N-input Lookup Tables, Multiplexer and Flip Flop. 
+ * If we want to implement a logic function, the corresponding
 
 
 
