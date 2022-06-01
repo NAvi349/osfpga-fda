@@ -110,6 +110,7 @@ graph TD;
 
 <details>
 	
+```verilog	
 <summary> Code </summary>
 	
 module counter(clk,reset,count);
@@ -149,6 +150,7 @@ else
 	 end
 endmodule
 			    
+```			    
 </details>
 			    
 			    
