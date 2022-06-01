@@ -170,8 +170,10 @@ vi. Run Behavioural Simulation
 ![image](https://user-images.githubusercontent.com/66086031/171450253-86659bb2-df54-46eb-b6f3-3fe1002653a6.png)
 	- The output counter gets incremented at every posedge of the slow clock
 	- This is the schematic
-	
 
+![image](https://user-images.githubusercontent.com/66086031/171463668-0e699f30-7041-46b6-8045-74efcd345406.png)
+
+	
 
 vii. Now set the design as top unit (not the testbench)
 
@@ -212,9 +214,16 @@ viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` fil
 
 - Hold Slack = Arrival Time(Data) - Required Arrival Time(hold time of FF)
 - Here delay in data is helpful
-- But delay is clock is not desirable.
+- But delay in clock is not desirable.
 	
+#### Synthesis
+- Now run synthesis.
+	
+![image](https://user-images.githubusercontent.com/66086031/171461220-e5682173-ee1f-4ed0-8cac-40d659f40dc0.png)
+
+- Since timing constraints are not specified, it will not report the timing information.
 ### Virtual Input/Output Counter
+
 
 
 ## Acknowledgements
