@@ -171,21 +171,19 @@ vi. Run Behavioural Simulation
 	- The output counter gets incremented at every posedge of the slow clock
 	- This is the schematic
 	
-![image](https://user-images.githubusercontent.com/66086031/171457253-2e869eef-992b-4a21-9e67-b058e5ff5c42.png)
 
 
 vii. Now set the design as top unit (not the testbench)
 
 vii. Run Elaboration
 	
-![image](https://user-images.githubusercontent.com/66086031/171451066-98f58c80-6b86-4122-8c85-d03cded110b7.png)
+![image](https://user-images.githubusercontent.com/66086031/171457253-2e869eef-992b-4a21-9e67-b058e5ff5c42.png)
 	
 viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` file.
 	
 ![image](https://user-images.githubusercontent.com/66086031/171456676-0166c665-f6ec-439f-b8ea-9f144d7cb4e1.png)
 
-			    
-
+    
 ### Virtual Input/Output Counter
 
 
