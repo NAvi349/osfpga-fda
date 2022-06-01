@@ -109,10 +109,8 @@ graph TD;
 - We use a frequency synthesizer to generate a slow clock to observe the outputs
 
 <details>
-	<summary> Code </summary>
-```verilog	
-
 	
+```verilog		
 module counter(clk,reset,count);
 input clk,reset;
 output reg [3:0] count = 4'b0000;
@@ -148,9 +146,9 @@ else
 		    count <= count + 1;
 		 end
 	 end
-endmodule
+endmodule			    
+```		
 			    
-```			    
 </details>
 			    
 			    
