@@ -171,6 +171,7 @@ vi. Run Behavioural Simulation
 	- The output counter gets incremented at every posedge of the slow clock
 	- This is the schematic
 	
+![image](https://user-images.githubusercontent.com/66086031/171457253-2e869eef-992b-4a21-9e67-b058e5ff5c42.png)
 
 
 vii. Now set the design as top unit (not the testbench)
