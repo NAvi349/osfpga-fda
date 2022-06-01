@@ -219,7 +219,7 @@ viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` fil
 #### Synthesis
 - Now run synthesis.
 	
-![image](https://user-images.githubusercontent.com/66086031/171461220-e5682173-ee1f-4ed0-8cac-40d659f40dc0.png)
+
 
 - Since timing constraints are not specified, it will not report the timing information.
 ### Virtual Input/Output Counter
