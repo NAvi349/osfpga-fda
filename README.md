@@ -109,9 +109,9 @@ graph TD;
 - We use a frequency synthesizer to generate a slow clock to observe the outputs
 
 <details>
-	
+	<summary> Code </summary>
 ```verilog	
-<summary> Code </summary>
+
 	
 module counter(clk,reset,count);
 input clk,reset;
