@@ -110,7 +110,8 @@ graph TD;
 
 <details>
 	<summary> Code </summary>
-		
+	
+```verilog		
 module counter(clk,reset,count);
 input clk,reset;
 output reg [3:0] count = 4'b0000;
@@ -147,7 +148,8 @@ else
 		 end
 	 end
 endmodule			    
-	
+```	
+			     
 </details>
 			    
 			    
