@@ -242,6 +242,36 @@ v. Synthesized netlist
 
 #### Bit Stream
 ![image](https://user-images.githubusercontent.com/66086031/171472464-638031c6-4830-413a-8d9a-3781c7008b27.png)
+
+#### Programming
+- Click program device to send the bitstream to the FPGA board.
+
+#### Timing Analysis
+	
+This can be done after synthesis or after implementation.
+
+i. Click on Report Timing Summary
+	
+![image](https://user-images.githubusercontent.com/66086031/171527437-dc59d715-5e3c-4ea8-8879-543664abaf95.png)
+
+2. We can also view the detailed path report for each path. It specifies the starting and endpoint.
+	
+![image](https://user-images.githubusercontent.com/66086031/171527522-d6eaa30e-5d50-4e02-a348-37fff8b6d4a3.png)
+
+- As the slack is positive, all the timing constraints are met.
+	
+#### Power 
+
+![image](https://user-images.githubusercontent.com/66086031/171527762-e6a9544d-3e9f-4995-b79f-75275ae13d33.png)
+
+#### Area
+
+- Click on report Resource Utilization
+	
+![image](https://user-images.githubusercontent.com/66086031/171527868-01199dea-c006-4b8a-8c6f-285ad9361f12.png)
+	
+![image](https://user-images.githubusercontent.com/66086031/171527983-43badbf2-3ef7-4768-821e-4b1ed1a4e51e.png)
+
 	
 	
 ### Virtual Input/Output Counter
