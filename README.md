@@ -272,10 +272,55 @@ i. Click on Report Timing Summary
 	
 ![image](https://user-images.githubusercontent.com/66086031/171527983-43badbf2-3ef7-4768-821e-4b1ed1a4e51e.png)
 
+- Summary 
+	
+![image](https://user-images.githubusercontent.com/66086031/171528074-5dab274f-06c5-4906-b1a4-9065509d6140.png)
+
+#### Vivado Summary
+(insert tables of all the data)
 	
 	
 ### Virtual Input/Output Counter
 
+- Using this method we can program a remote FPGA connected to a cloud.
+- The VIO provides the inputs to the FPGA and probes the output.
+- VIO output is the input to the FPGA
+- VIO input is the output of the FPGA
+	
+![image](https://user-images.githubusercontent.com/66086031/171528367-5bcf1eff-2340-4aae-88b4-f46d1984bd06.png)
+
+### VIO Code
+
+- Make these changes. The reset and clock are come from VIO. So they are no longer input ports. The counter output will be probed by the VIO, so it is no longer an output port.
+
+**VIO Inputs:** Slow Clock, Counter Output
+**VIO Outputs: **Reset
+	
+![image](https://user-images.githubusercontent.com/66086031/171529048-206b9e03-dae7-4fd7-9b93-78d56cd2a1ea.png)
+	
+i. Click on IP Catalog in the Project Manager.
+	
+ii. Search VIO 
+	
+![image](https://user-images.githubusercontent.com/66086031/171529540-1367c9ae-83a8-45e6-8c89-1572c78eca7f.png)
+
+iii. Configure as shown.
+	
+![image](https://user-images.githubusercontent.com/66086031/171529946-f8629fa0-c100-42f0-a454-3d56d6aa5992.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171529996-b6b9eb55-66ef-4e0c-ac1e-8020f91dc9ea.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171530060-78c084b3-7c9b-4e7d-9832-4ab3b6362f49.png)
+	
+iv. Click generate
+
+v. Go to IP Sources and click on Instantion Template and copy these lines from the ```.veo``` file.
+	
+![image](https://user-images.githubusercontent.com/66086031/171530413-62af72a2-f647-454d-b0b4-c5e3fbccf012.png)
+
+vi. Use this to instantiate the VIO in the ```.v``` file
+
+![image](https://user-images.githubusercontent.com/66086031/171530512-b9e79bc6-61a9-4883-9acd-4b3398872145.png)
 
 
 ## Acknowledgements
