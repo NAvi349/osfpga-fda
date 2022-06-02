@@ -148,7 +148,7 @@ else
 		    count <= count + 1'b1;
 		 end
 	 end
-endmodule				    
+endmodule				    				    
 ```	
 			     
 </details>
