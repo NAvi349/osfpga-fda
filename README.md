@@ -374,6 +374,11 @@ vi. Use this to instantiate the VIO in the ```.v``` file
 
 ![image](https://user-images.githubusercontent.com/66086031/171531855-d43518f9-699e-4ffc-b1c4-ca22c95c60b6.png)
 
+### Bitstream Generation
+
+![image](https://user-images.githubusercontent.com/66086031/171533795-017d2854-ae13-4b49-8fc2-07f33e5ad4b3.png)
+
+
 ## Day 2
 
 ## Acknowledgements
