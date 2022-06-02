@@ -124,12 +124,13 @@ if (reset)
     begin
         clk_div <= 1'b0;
         count_reg <= 26'd0;
+        ///count <= 4'b0;
      end
 else
     begin
         count_reg <= count_reg + 1;
-        if (count_reg == 26'h3ffffff) // for synthesis
-    //   if (count_reg == 26'd12) // for simulation
+    /// if (count_reg == 26'h3ffffff) // for synthesis
+        if (count_reg == 26'd12) // for simulation
         begin
             clk_div <= ~ clk_div;
             count_reg <= 26'd0;
@@ -147,7 +148,7 @@ else
 		    count <= count + 1'b1;
 		 end
 	 end
-endmodule			    
+endmodule				    
 ```	
 			     
 </details>
