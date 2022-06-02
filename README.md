@@ -381,6 +381,37 @@ vi. Use this to instantiate the VIO in the ```.v``` file
 
 ## Day 2
 
+### Intro to OpenFPGA
+
+- It is an open source framework to quickly generated a custom FPGA fabric specific to our design
+- It is automated
+- Reduces development time
+- Generally it takes 24 hours to produce a production ready layouts
+
+### Custom FPGAs
+
+![image](https://user-images.githubusercontent.com/66086031/171633283-a0b723c1-a5e2-4192-9128-8b70aadff69c.png)
+
+- For certain applications custom-made FPGAs provide huge performance gain.
+- Custom FPGA architectures are expensive to produce
+- OpenFPGA allows us to customize our own FPGA fabrix using a set of templates
+- Generate verilog netlists based on an XML file - VPR ( Versatile Place and Route )
+- Automatically generates Verilog testbenches
+
+Visit this repo to install OpenFPGA: https://github.com/lnis-uofu/OpenFPGA
+
+###  Verilog to Routing (VTR)
+
+- XML - based architecture description language to describe the custom FPGA architecture
+- **Download Link:** https://github.com/verilog-to-routing/vtr-verilog-to-routing
+- **Documentation:** https://docs.verilogtorouting.org
+
+- Basically it maps our RTL to a placed and routed FPGA
+![image](https://user-images.githubusercontent.com/66086031/171636949-5d0da10d-f612-44c5-8fc1-5135ab87efcf.png)
+
+### VTR FLow
+![image](https://user-images.githubusercontent.com/66086031/171637784-22745a03-dd8f-4078-b0fa-06035be33286.png)
+
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
