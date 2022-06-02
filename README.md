@@ -462,6 +462,7 @@ This is the general structure of a Earch.xml file. It describes the FPGA Archite
 .names - LUTS
 ```
 ### Lab on VPR on a Pre-Synthesized Design
+
 i. Create a working directory.
 
 ```console 
@@ -476,9 +477,17 @@ $VTR_ROOT/vpr/vpr \
 $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 --route_chan_width 100
+--disp on
 ```
+![image](https://user-images.githubusercontent.com/66086031/171648951-9778a11d-6e5c-4c0b-93fd-28b58d83eb7a.png)
 
-![image](https://user-images.githubusercontent.com/66086031/171643556-9316694a-97d0-4ebe-8ba7-6fecc42bc85a.png)
+![image](https://user-images.githubusercontent.com/66086031/171650632-1026279d-f9d9-48cb-a81b-e93c93580fb2.png)
+![image](https://user-images.githubusercontent.com/66086031/171650888-21d931f6-809c-46cd-9091-186ab3d90f2d.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171650479-561f9b5c-7711-47b0-9706-2fa692af1680.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171651073-a890cfff-692d-4fb8-aa4f-332aa7aced28.png)
+
 
 
 
