@@ -407,9 +407,11 @@ Visit this repo to install OpenFPGA: https://github.com/lnis-uofu/OpenFPGA
 - **Documentation:** https://docs.verilogtorouting.org
 
 - Basically it maps our RTL to a placed and routed FPGA
+- 
 ![image](https://user-images.githubusercontent.com/66086031/171636949-5d0da10d-f612-44c5-8fc1-5135ab87efcf.png)
 
 ### VTR FLow
+
 ![image](https://user-images.githubusercontent.com/66086031/171637784-22745a03-dd8f-4078-b0fa-06035be33286.png)
 
 i. We shall first run VPR on a Pre-synthesized circuit.
