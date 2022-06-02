@@ -296,7 +296,7 @@ i. Click on Report Timing Summary
 **VIO Inputs:** Slow Clock, Counter Output
 **VIO Outputs: **Reset
 	
-![image](https://user-images.githubusercontent.com/66086031/171529048-206b9e03-dae7-4fd7-9b93-78d56cd2a1ea.png)
+![image](https://user-images.githubusercontent.com/66086031/171530603-6fbabc7c-6099-4305-a947-f58444616006.png)
 	
 i. Click on IP Catalog in the Project Manager.
 	
