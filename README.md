@@ -1,3 +1,42 @@
+# Table of Contents
+
+- [Table of Contents](#table-of-contents)
+  - [Day 1](#day-1)
+    - [FPGA Introduction](#fpga-introduction)
+      - [Flow](#flow)
+      - [FPGA and FPGA Architecture](#fpga-and-fpga-architecture)
+      - [ASIC Vs FPGAs](#asic-vs-fpgas)
+      - [Applications](#applications)
+      - [FPGA Architecture](#fpga-architecture)
+      - [Bitstream](#bitstream)
+      - [Lookup table](#lookup-table)
+      - [FPGA Programming](#fpga-programming)
+      - [FPGA Design Methodology](#fpga-design-methodology)
+      - [Synthesizable and Non - Synthesizable](#synthesizable-and-non---synthesizable)
+      - [Basys 3 FPGA Board](#basys-3-fpga-board)
+      - [Tools used](#tools-used)
+      - [Different ways of programming](#different-ways-of-programming)
+    - [Counter Example in Vivado](#counter-example-in-vivado)
+    - [Vivado-counter example](#vivado-counter-example)
+      - [Static Timing Analysis](#static-timing-analysis)
+        - [Setup Time (Max. Delay) Constraints](#setup-time-max-delay-constraints)
+        - [Hold Time (Min. Delay) Constraints](#hold-time-min-delay-constraints)
+        - [Setup Slack](#setup-slack)
+        - [Hold Slack](#hold-slack)
+      - [Synthesis](#synthesis)
+      - [Implementation](#implementation)
+        - [Resource Utilization](#resource-utilization)
+      - [Bit Stream](#bit-stream)
+      - [Programming](#programming)
+      - [Timing Analysis](#timing-analysis)
+      - [Power](#power)
+      - [Area](#area)
+      - [Vivado Summary](#vivado-summary)
+    - [Virtual Input/Output Counter](#virtual-inputoutput-counter)
+    - [VIO Code](#vio-code)
+    - [Elaboration and Pin Assignment](#elaboration-and-pin-assignment)
+  - [Day 2](#day-2)
+  - [Acknowledgements](#acknowledgements)
 
 ## Day 1
 
@@ -5,19 +44,22 @@
 
 #### Flow
 
- We shall be looking at a 4-bit counter example and the RISC-V RVMyth Processor through two flows:
+We shall be looking at a 4-bit counter example and the RISC-V RVMyth Processor through two flows:
+
 - Vivado
 - Skywater OpenSource FPGGA (SOFA)
 
 #### FPGA and FPGA Architecture
 
 Programmable Logic Devices.
+
 - The hardware can be customized after the manufacturing by programming the device
 - PLA - Produces Minterms, Variable AND Gates, Input to OR Gates is fixed. But sequential elements cannot be programmed using this
 - CPLD - Complex Programmable Logic Devices
 - FPGA - Field Programmable Gate Arrays
 
 FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
+
 #### ASIC Vs FPGAs
 
 | ASIC                          | FPGA           |
@@ -28,6 +70,7 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 | RTL to Layout                 | RTL to Bitstream generation |
 
 #### Applications
+
 - FPGAs are good for implementing algorithms which are able to run parallely.
 - Hardware acceleration implementation of **Neural Networks**.
 - Embedded Systems
@@ -42,12 +85,12 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 
 An FPGA Architecture consists of
 
-- **Configurable Logic Blocks** 
-	* It contains an N-input Lookup Tables, Carry chain, Multiplexer and a Flip Flop. 
+- **Configurable Logic Blocks**
+  - It contains an N-input Lookup Tables, Carry chain, Multiplexer and a Flip Flop.
 
 - **Programmable Interconnects**
-	* The wires which connect the CLBs.
-	
+  - The wires which connect the CLBs.
+
 - **Programmable I/O**
 
 #### Bitstream
@@ -75,8 +118,8 @@ An FPGA Architecture consists of
 
 ```mermaid
 graph TD;
-	A[Architectural Description] --> B[RTL Design and testbench]
-	B --> C[Behavioral Simulation]
+ A[Architectural Description] --> B[RTL Design and testbench]
+ B --> C[Behavioral Simulation]
 ```
 
 ![image](https://user-images.githubusercontent.com/66086031/171422258-df96f7d1-5377-49af-ae48-7eba5c7922ce.png)
@@ -84,6 +127,7 @@ graph TD;
 #### Synthesizable and Non - Synthesizable
 
 **The following are non-synthesizable:**
+
 - User defined delays
 - Inital block
 - nmos, pmos primitives
@@ -97,11 +141,11 @@ graph TD;
 
 #### Tools used
 
-- Xilinx Vivado 2019.2 - https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html
+- Xilinx Vivado 2019.2 - <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html>
 
 #### Different ways of programming
 
-- Local Programming using a board 
+- Local Programming using a board
 - Remote Programming - A FPGA connected to a remote server: I/O through Virtual I/O.
 
 ### Counter Example in Vivado
@@ -109,9 +153,9 @@ graph TD;
 - We use a frequency synthesizer to generate a slow clock to observe the outputs
 
 <details>
-	<summary> Code </summary>
-	
-```verilog		
+ <summary> Code </summary>
+
+```verilog  
 module counter(clk,reset,count);
 input clk,reset;
 output reg [3:0] count = 4'b0000;
@@ -138,56 +182,55 @@ else
     end
  end
   
-	 always @ (posedge clk_div) begin
-		 if (reset)
-		 begin
-		    count <= 4'b0000;
-		 end
-		 else
-		 begin
-		    count <= count + 1'b1;
-		 end
-	 end
-endmodule				    				    
-```	
-			     
+  always @ (posedge clk_div) begin
+   if (reset)
+   begin
+      count <= 4'b0000;
+   end
+   else
+   begin
+      count <= count + 1'b1;
+   end
+  end
+endmodule                
+```
+
 </details>
-			    
-			    
+
 ### Vivado-counter example
 
 i. Type ```vivado``` in the terminal.
-	
+
 ii. Create a new project.
 
 iii. Do the following settings
 ![image](https://user-images.githubusercontent.com/66086031/171430681-824be24d-7f03-4c07-82f8-d7fe3da126c9.png)
-	
+
 iv. Click finish.
 
 v. Add source files
-	- Set the testbench as top module while during Behavioural Simulation
-	
-vi. Run Behavioural Simulation
-	
-![image](https://user-images.githubusercontent.com/66086031/171450253-86659bb2-df54-46eb-b6f3-3fe1002653a6.png)
-	- The output counter gets incremented at every posedge of the slow clock
 
+- Set the testbench as top module while during Behavioural Simulation
+
+vi. Run Behavioural Simulation
+
+![image](https://user-images.githubusercontent.com/66086031/171450253-86659bb2-df54-46eb-b6f3-3fe1002653a6.png)
+
+- The output counter gets incremented at every posedge of the slow clock
 
 vii. Now set the design as top unit (not the testbench)
 
 vii. Run Elaboration
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171467301-0a08fd2e-4885-4799-928c-e92d318f9d98.png)
 
-	
 viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` file.
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171456676-0166c665-f6ec-439f-b8ea-9f144d7cb4e1.png)
 ![image](https://user-images.githubusercontent.com/66086031/171457762-be279c03-ed55-4ecb-8c16-7d7a5545ebed.png)
 
 #### Static Timing Analysis
-	
+
 ##### Setup Time (Max. Delay) Constraints
 
 ![image](https://user-images.githubusercontent.com/66086031/166118620-dd932eef-2e14-4689-a24d-d1e1e2098bcb.png)
@@ -215,13 +258,13 @@ viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` fil
 - Hold Slack = Arrival Time(Data) - Required Arrival Time(hold time of FF)
 - Here delay in data is helpful
 - But delay in clock is not desirable.
-	
+
 #### Synthesis
-	
+
 i. Now run synthesis.
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171467889-c8af77a8-afbb-4dc3-946d-716d4f58f411.png)
-	
+
 ii. Primary clock is selected.
 ![image](https://user-images.githubusercontent.com/66086031/171468421-019040e0-79d6-4cd5-9d03-bb461236fee5.png)
 
@@ -229,14 +272,14 @@ iii. No generated clock.
 ![image](https://user-images.githubusercontent.com/66086031/171468376-cb623b4e-9e5c-4e0f-9090-13b4ddf79c09.png)
 
 iv Skip to finish.
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171469728-0ce56443-9bd6-4b9e-87b9-9c2078ba1f04.png)
 
 v. Synthesized netlist
 ![image](https://user-images.githubusercontent.com/66086031/171469881-59dc363f-2522-42f6-b6b9-eef91c4f4adb.png)
 
 #### Implementation
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171471188-822fe88a-b3af-4e42-ab06-2e84c8b0c89a.png)
 
 ##### Resource Utilization
@@ -244,52 +287,54 @@ v. Synthesized netlist
 ![image](https://user-images.githubusercontent.com/66086031/171471394-19abdedc-9766-4c3d-abb8-03319d8219f1.png)
 
 #### Bit Stream
+
 ![image](https://user-images.githubusercontent.com/66086031/171472464-638031c6-4830-413a-8d9a-3781c7008b27.png)
 
 #### Programming
+
 - Click program device to send the bitstream to the FPGA board.
 
 #### Timing Analysis
-	
+
 This can be done after synthesis or after implementation.
 
 i. Click on Report Timing Summary
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171527437-dc59d715-5e3c-4ea8-8879-543664abaf95.png)
 
-2. We can also view the detailed path report for each path. It specifies the starting and endpoint.
-	
+ii. We can also view the detailed path report for each path. It specifies the starting and endpoint.
+
 ![image](https://user-images.githubusercontent.com/66086031/171527522-d6eaa30e-5d50-4e02-a348-37fff8b6d4a3.png)
 
 - As the slack is positive, all the timing constraints are met.
-	
-#### Power 
+
+#### Power
 
 ![image](https://user-images.githubusercontent.com/66086031/171527762-e6a9544d-3e9f-4995-b79f-75275ae13d33.png)
 
 #### Area
 
 - Click on report Resource Utilization
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171527868-01199dea-c006-4b8a-8c6f-285ad9361f12.png)
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171527983-43badbf2-3ef7-4768-821e-4b1ed1a4e51e.png)
 
-- Summary 
-	
+- Summary
+
 ![image](https://user-images.githubusercontent.com/66086031/171528074-5dab274f-06c5-4906-b1a4-9065509d6140.png)
 
 #### Vivado Summary
+
 (insert tables of all the data)
-	
-	
+
 ### Virtual Input/Output Counter
 
 - Using this method we can program a remote FPGA connected to a cloud.
 - The VIO provides the inputs to the FPGA and probes the output.
 - VIO output is the input to the FPGA
 - VIO input is the output of the FPGA
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171528367-5bcf1eff-2340-4aae-88b4-f46d1984bd06.png)
 
 ### VIO Code
@@ -297,38 +342,40 @@ i. Click on Report Timing Summary
 - Make these changes. The reset and clock are come from VIO. So they are no longer input ports. The counter output will be probed by the VIO, so it is no longer an output port.
 
 **VIO Inputs:** Slow Clock, Counter Output
-**VIO Outputs: **Reset
-	
+**VIO Outputs:**Reset
+
 ![image](https://user-images.githubusercontent.com/66086031/171530603-6fbabc7c-6099-4305-a947-f58444616006.png)
-	
+
 i. Click on IP Catalog in the Project Manager.
-	
-ii. Search VIO 
-	
+
+ii. Search VIO
+
 ![image](https://user-images.githubusercontent.com/66086031/171529540-1367c9ae-83a8-45e6-8c89-1572c78eca7f.png)
 
 iii. Configure as shown.
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171529946-f8629fa0-c100-42f0-a454-3d56d6aa5992.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/171529996-b6b9eb55-66ef-4e0c-ac1e-8020f91dc9ea.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/171530060-78c084b3-7c9b-4e7d-9832-4ab3b6362f49.png)
-	
+
 iv. Click generate
 
 v. Go to IP Sources and click on Instantion Template and copy these lines from the ```.veo``` file.
-	
+
 ![image](https://user-images.githubusercontent.com/66086031/171530413-62af72a2-f647-454d-b0b4-c5e3fbccf012.png)
 
 vi. Use this to instantiate the VIO in the ```.v``` file
 
 ![image](https://user-images.githubusercontent.com/66086031/171530512-b9e79bc6-61a9-4883-9acd-4b3398872145.png)
 
+### Elaboration and Pin Assignment
+
+![image](https://user-images.githubusercontent.com/66086031/171531855-d43518f9-699e-4ffc-b1c4-ca22c95c60b6.png)
+
+## Day 2
 
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
-
-
-
