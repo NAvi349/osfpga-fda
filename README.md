@@ -482,9 +482,11 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 ![image](https://user-images.githubusercontent.com/66086031/171648951-9778a11d-6e5c-4c0b-93fd-28b58d83eb7a.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/171650632-1026279d-f9d9-48cb-a81b-e93c93580fb2.png)
-![image](https://user-images.githubusercontent.com/66086031/171650888-21d931f6-809c-46cd-9091-186ab3d90f2d.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/171650479-561f9b5c-7711-47b0-9706-2fa692af1680.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171650888-21d931f6-809c-46cd-9091-186ab3d90f2d.png)
+
 
 ![image](https://user-images.githubusercontent.com/66086031/171651073-a890cfff-692d-4fb8-aa4f-332aa7aced28.png)
 
