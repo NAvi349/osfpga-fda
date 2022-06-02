@@ -412,6 +412,76 @@ Visit this repo to install OpenFPGA: https://github.com/lnis-uofu/OpenFPGA
 ### VTR FLow
 ![image](https://user-images.githubusercontent.com/66086031/171637784-22745a03-dd8f-4078-b0fa-06035be33286.png)
 
+i. We shall first run VPR on a Pre-synthesized circuit.
+ii. Then, we shall run entire VPR Flow from RTL
+
+
+### VPR Flow on a Pre-Synthesized Design
+
+**i. Packing** - combines the technology mapped netlist into to Complex Logic Blocks
+**ii. Placement** - postition of the CLBs - it produces a .place file.
+**iii. Routing** - interconnection between blocks
+**iv. Analysis** - Analyzes the implementation
+
+Input: Blif file, Earch
+
+This is the general structure of a Earch.xml file. It describes the FPGA Architecture.
+
+```xml
+<!--
+-->
+<architecture>
+  <models>
+    <model name = "">
+    </model>
+  </models>
+  <tiles>
+    <tile name = "">
+    </tile>
+  </tiles>
+  <layout> <!-- Grid Layout, aspect ratio --> 
+  </layout>
+  <device> <!-- Transistor definitions -->
+  </device>
+  
+  <switchlist>    
+  </switchlist>
+  
+  <segmentlist>
+  </segmentlist>
+             
+  <directlist>
+  </directlist>
+  
+</architecture>
+```
+
+### .blif file
+
+```blif
+.names - LUTS
+```
+### Lab on VPR on a Pre-Synthesized Design
+i. Create a working directory.
+
+```console 
+mkdir -p vtr_work/quickstart/vpr_tseng
+cd ./vtr_work/quickstart/vpr_tseng
+```
+
+ii. Now pass the FPGA architecture and the technology mapped netlist of the design.
+
+```console
+$VTR_ROOT/vpr/vpr \
+$VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+$VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
+--route_chan_width 100
+```
+
+![image](https://user-images.githubusercontent.com/66086031/171643556-9316694a-97d0-4ebe-8ba7-6fecc42bc85a.png)
+
+
+
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
