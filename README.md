@@ -458,12 +458,12 @@ This is the general structure of a Earch.xml file. It describes the FPGA Archite
 </architecture>
 ```
 
-### .blif file
+#### .blif file
 
 ```blif
 .names - LUTS
 ```
-### Lab on VPR on a Pre-Synthesized Design
+#### Lab on VPR on a Pre-Synthesized Design
 
 i. Create a working directory.
 
@@ -500,7 +500,7 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 --disp on
 ```
 
-### Output of the VPR Step
+#### Output of the VPR Step
 
 ![image](https://user-images.githubusercontent.com/66086031/171880403-785999f0-d4f8-4c5a-8a09-86de68b51e81.png)
 
@@ -509,16 +509,18 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 - .route file: interconnects
 - .log file:
 
-### Timing Reports
+#### Timing Reports
 
-#### Setup Slack
+##### Setup Slack
 ![image](https://user-images.githubusercontent.com/66086031/171881471-b6d87fc5-c0e4-4eff-94b0-7f3cc24ee1f4.png)
 - Here, the setup slack is violated as no clock constraints are specified.
 
-#### Hold Slack
+##### Hold Slack
 ![image](https://user-images.githubusercontent.com/66086031/171881668-1a117227-631b-4a1d-8275-37b6bcb18082.png)
 
 #### Constraints
+
+i. Create a ```tseng.sdc``` file
 
 ```
 create_clock -period 10 -name pclk
@@ -526,9 +528,75 @@ set_input_delay -clock pclk -max 0 [get_ports {*}]
 set_output_delay -clock pclk -max 0 [get_ports {*}]
 ```
 
+ii. Run include sdc file as part of the command
+
+```
+$VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif --route_chan_width 100 --disp on --sdc_file tseng.sdc 
+```
+
+
 - Now we can see that the setup slack is met.
 
 ![image](https://user-images.githubusercontent.com/66086031/171883334-6cdab73b-d178-4df3-88e3-071e0a7791f2.png)
+
+### VTR Flow
+
+i. Run the automated VTR Flow command.
+
+```
+$VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
+      /home/knavin2002/Desktop/openfpga/Day\ 2/vtr_work/counter.v \
+      $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+      -temp_dir . --route_chan_width 100
+
+```
+![image](https://user-images.githubusercontent.com/66086031/171900694-f28af658-1fc6-4039-b4fa-fc02df185784.png)
+
+ii. We can run vpr (flow analysis) on the pre-vpr file.blif file.
+
+```
+$VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+                  counter --circuit_file counter.pre-vpr.blif \
+                  --route_chan_width 100 \
+                  --analysis --disp on
+```
+
+![image](https://user-images.githubusercontent.com/66086031/171903176-c2ecb949-061f-4605-b1d8-85d64550d49a.png)
+
+iii. Now run the entire VPR Flow
+
+```
+$VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+                  counter --circuit_file counter.pre-vpr.blif \
+                  --route_chan_width 100 --disp on
+
+```
+
+![image](https://user-images.githubusercontent.com/66086031/171903834-96a94a23-6b08-495e-9fce-77ca92b2e020.png)
+
+iv. Generation of Post implementation netlist
+
+```
+$VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+                  counter.pre-vpr.blif \
+                  --gen_post_synthesis_netlist on
+
+```
+
+![image](https://user-images.githubusercontent.com/66086031/171905696-a27cac38-e1e1-4a07-9a73-eae0707ace8c.png)
+![image](https://user-images.githubusercontent.com/66086031/171907528-cdafb746-a444-4c49-96a2-53027ff9ba76.png)
+
+- To run the post implementation netlist, we need primitves file
+
+v. Simulation in Xilinx Vivaldo
+
+![image](https://user-images.githubusercontent.com/66086031/171908726-a64f6a64-9934-4507-b0f1-f2c6b1cdced2.png)
+
+- Include the path to the .sdf file correctly in the testbench.
+
+![image](https://user-images.githubusercontent.com/66086031/171911723-af793e64-25d4-4b9f-b051-8734ba217e71.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171911596-7b329a31-01c7-4231-9409-3918527af000.png)
 
 
 ## Acknowledgements
