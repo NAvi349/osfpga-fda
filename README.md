@@ -420,10 +420,10 @@ ii. Then, we shall run entire VPR Flow from RTL
 
 ### VPR Flow on a Pre-Synthesized Design
 
-**i. Packing** - combines the technology mapped netlist into to Complex Logic Blocks
-**ii. Placement** - postition of the CLBs - it produces a .place file.
-**iii. Routing** - interconnection between blocks
-**iv. Analysis** - Analyzes the implementation
+i. **Packing** - combines the technology mapped netlist into (CLBs) Complex Logic Blocks.
+ii. **Placement** - postition of the CLBs - it produces a .place file.
+iii. **Routing** - interconnection between blocks
+iv. **Analysis** - Analyzes the implementation
 
 Input: Blif file, Earch
 
@@ -502,11 +502,33 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 
 ### Output of the VPR Step
 
-- .net file: post packed circuit, circuit in terms of standard cells
+![image](https://user-images.githubusercontent.com/66086031/171880403-785999f0-d4f8-4c5a-8a09-86de68b51e81.png)
+
+- .net file: post packed circuit, circuit in terms of CLBs.
 - .place file: how the cells are placed
 - .route file: interconnects
 - .log file:
 
+### Timing Reports
+
+#### Setup Slack
+![image](https://user-images.githubusercontent.com/66086031/171881471-b6d87fc5-c0e4-4eff-94b0-7f3cc24ee1f4.png)
+- Here, the setup slack is violated as no clock constraints are specified.
+
+#### Hold Slack
+![image](https://user-images.githubusercontent.com/66086031/171881668-1a117227-631b-4a1d-8275-37b6bcb18082.png)
+
+#### Constraints
+
+```
+create_clock -period 10 -name pclk
+set_input_delay -clock pclk -max 0 [get_ports {*}]
+set_output_delay -clock pclk -max 0 [get_ports {*}]
+```
+
+- Now we can see that the setup slack is met.
+
+![image](https://user-images.githubusercontent.com/66086031/171883334-6cdab73b-d178-4df3-88e3-071e0a7791f2.png)
 
 
 ## Acknowledgements
