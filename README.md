@@ -481,6 +481,7 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 --route_chan_width 100
 --disp on
 ```
+
 ![image](https://user-images.githubusercontent.com/66086031/171648951-9778a11d-6e5c-4c0b-93fd-28b58d83eb7a.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/171650479-561f9b5c-7711-47b0-9706-2fa692af1680.png)
@@ -489,6 +490,22 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 
 ![image](https://user-images.githubusercontent.com/66086031/171651073-a890cfff-692d-4fb8-aa4f-332aa7aced28.png)
 
+iii. Additional parameter can be applied here
+```console
+$VTR_ROOT/vpr/vpr \
+$VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+$VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
+--route_chan_width 100
+--analysis
+--disp on
+```
+
+### Output of the VPR Step
+
+- .net file: post packed circuit, circuit in terms of standard cells
+- .place file: how the cells are placed
+- .route file: interconnects
+- .log file:
 
 
 
