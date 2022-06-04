@@ -808,6 +808,18 @@ i. Run Bitstream generation.
 
 ![image](https://user-images.githubusercontent.com/66086031/171988392-1ec53703-30a8-4213-bf66-99ee4a4d3423.png)
 
+
+## Day 4 - SOFA FPGA Fabric IP
+
+### Intro to SOFA
+
+- **SOFA** - **S**kywate **O**pensource **F**PG**A**s
+- Open-source FPGA IPs
+- Skywater 130nm PDK and OpenFPGA Framework
+- HD - High Density FPGAs - embedded FPGAs.
+
+
+
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
