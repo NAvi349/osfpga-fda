@@ -689,6 +689,38 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 
 ### Comparison of Basys3 and VTR Flow
 
+- Now we shall consolidating all the results from the Vivado flow and the VTR Flow of the counter design.
+
+#### Post Implementation Timing
+
+![image](https://user-images.githubusercontent.com/66086031/171983435-7c5bf0e0-d847-4eed-ba6f-8acc05c28653.png)
+
+- `.sdc` file
+- Clock period `10ns` or `100 MHz`
+  
+
+| Parameter                        | Basys3 | VTR Earch |
+| :------------------------------- | :----: | :-------: |
+| **Technology**                   |        |           |
+| **Worst Negative Slack - Setup** |        |           |
+| **Worst Negative Slack - Hold**  |        |           |
+
+- Min. Slack
+  
+| Parameter                        | Basys3 | VTR Earch (ns) |
+| :------------------------------- | :----: | :------------: |
+| **Minimum Time Period**          |        |     $1.8$      |
+| **Worst Negative Slack - Setup** |        |     $0.34$     |
+| **Worst Negative Slack - Hold**  |        |    $0.293$     |
+
+#### Area
+![image](https://user-images.githubusercontent.com/66086031/171983481-1f9c9f95-bd65-48a9-b924-b53d66dcc5dd.png)
+
+#### Power
+![image](https://user-images.githubusercontent.com/66086031/171983532-22cb6a7d-72f5-4926-95a5-14a0229087b4.png)
+
+
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
+
