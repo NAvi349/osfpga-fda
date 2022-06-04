@@ -541,6 +541,8 @@ $VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tsen
 
 ### VTR Flow
 
+#### VTR Synthesis and Simulation
+
 i. Run the automated VTR Flow command.
 
 ```
@@ -597,6 +599,73 @@ v. Simulation in Xilinx Vivaldo. Include post_synthesis file, testbench and prim
 ![image](https://user-images.githubusercontent.com/66086031/171911723-af793e64-25d4-4b9f-b051-8734ba217e71.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/171911596-7b329a31-01c7-4231-9409-3918527af000.png)
+
+
+#### Timing Analysis
+
+- We have to pass the `.blif` to the VPR Flow otherwise the tool will have its own constraints.
+
+i. Create a `constraints.sdc` file. Create constraints as follows. Also change the name of the clock in the pre-vpr.blif as `up_counter_clk`.
+
+```
+create_clock -period 10 up_counter_clk
+set_input_delay -clock up_counter_clk -max 0 [get_ports {*}]
+set_output_delay -clock up_counter_clk -max 0 [get_ports {*}]
+```
+
+ii. Now run VPR flow with te timing constraints.
+
+```
+  $VTR_ROOT/vpr/vpr \
+  $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+  counter.pre-vpr.blif --route_chan_width 100 \
+  --sdc_file /home/knavin2002/Desktop/openfpga/Day\ 2/tseng.sdc
+```
+
+![image](https://user-images.githubusercontent.com/66086031/171972373-a9691b36-9484-4202-84f1-89af574d8ae2.png)
+
+iii. We can check whether the setup and hold time constraints are met.
+
+![image](https://user-images.githubusercontent.com/66086031/171972473-302a5451-adbb-40a2-8338-dfc8346845ea.png)
+
+iv. Now change the clock period to 5ns in `.sdc` file.
+
+![image](https://user-images.githubusercontent.com/66086031/171972520-4ca625c5-9668-405a-91bb-6c56aa89aabc.png)
+
+v. Check the setup and hold constraints.
+
+![image](https://user-images.githubusercontent.com/66086031/171972921-b27f7109-9422-43a1-b729-645f865c632e.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171973147-065037c9-6d2f-4d3f-992a-3c6fb827f33b.png)
+
+- They are still met.
+
+#### Area Analysis
+
+i. Open `vpr_stdout.log` file.
+
+![image](https://user-images.githubusercontent.com/66086031/171973545-691c24c5-16c6-4a39-966e-174fb26eadbf.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171973735-4488fa7a-e908-47c5-ac09-cf8f428fdde0.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171973845-100f38ec-a402-41b6-b3a1-d322fbe71eee.png)
+
+#### Power Analysis
+
+i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
+
+```
+  $VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
+  /home/knavin2002/Desktop/openfpga/Day\ 2/vtr_work/counter.v \
+  $VTR_ROOT/vtr_flow/arch/timing/EArch.xml -power -cmos_tech \
+  $VTR_ROOT/vtr_flow/tech/PTM_45nm/45nm.xml \
+  -temp_dir . --route_chan_width 100
+```
+
+![image](https://user-images.githubusercontent.com/66086031/171974532-08650fb6-c77f-4b1b-bc3b-6e8f5e1d0d33.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171974575-3da79a6f-4fc5-4819-b874-9b795d561b9a.png)
+
 
 
 ## Acknowledgements
