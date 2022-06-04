@@ -35,7 +35,26 @@
     - [Virtual Input/Output Counter](#virtual-inputoutput-counter)
     - [VIO Code](#vio-code)
     - [Elaboration and Pin Assignment](#elaboration-and-pin-assignment)
+    - [Bitstream Generation](#bitstream-generation)
   - [Day 2](#day-2)
+    - [Intro to OpenFPGA](#intro-to-openfpga)
+    - [Custom FPGAs](#custom-fpgas)
+    - [Verilog to Routing (VTR)](#verilog-to-routing-vtr)
+    - [VTR FLow](#vtr-flow)
+    - [VPR Flow on a Pre-Synthesized Design](#vpr-flow-on-a-pre-synthesized-design)
+      - [.blif file](#blif-file)
+      - [Lab on VPR on a Pre-Synthesized Design](#lab-on-vpr-on-a-pre-synthesized-design)
+      - [Output of the VPR Step](#output-of-the-vpr-step)
+      - [Timing Reports](#timing-reports)
+        - [VPR Setup Slack](#vpr-setup-slack)
+        - [VPR Hold Slack](#vpr-hold-slack)
+      - [Constraints](#constraints)
+    - [VTR Flow](#vtr-flow-1)
+      - [VTR Synthesis and Simulation](#vtr-synthesis-and-simulation)
+      - [VTR Timing Analysis](#vtr-timing-analysis)
+      - [Area Analysis](#area-analysis)
+      - [Power Analysis](#power-analysis)
+    - [Comparison of Basys3 and VTR Flow](#comparison-of-basys3-and-vtr-flow)
   - [Acknowledgements](#acknowledgements)
 
 ## Day 1
@@ -62,12 +81,12 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 
 #### ASIC Vs FPGAs
 
-| ASIC                          | FPGA           |
-| ---------------------         |:-------------: |
-| Not programmable              | Reprogrammable |
-| Final Stage implementation    | Useful in prototyping a design|  
-| Huge time required to design  | Less Time Comparatively      |
-| RTL to Layout                 | RTL to Bitstream generation |
+| ASIC                         |              FPGA              |
+| ---------------------------- | :----------------------------: |
+| Not programmable             |         Reprogrammable         |
+| Final Stage implementation   | Useful in prototyping a design |
+| Huge time required to design |    Less Time Comparatively     |
+| RTL to Layout                |  RTL to Bitstream generation   |
 
 #### Applications
 
@@ -378,7 +397,6 @@ vi. Use this to instantiate the VIO in the ```.v``` file
 
 ![image](https://user-images.githubusercontent.com/66086031/171533795-017d2854-ae13-4b49-8fc2-07f33e5ad4b3.png)
 
-
 ## Day 2
 
 ### Intro to OpenFPGA
@@ -398,16 +416,16 @@ vi. Use this to instantiate the VIO in the ```.v``` file
 - Generate verilog netlists based on an XML file - VPR ( Versatile Place and Route )
 - Automatically generates Verilog testbenches
 
-Visit this repo to install OpenFPGA: https://github.com/lnis-uofu/OpenFPGA
+Visit this repo to install OpenFPGA: <https://github.com/lnis-uofu/OpenFPGA>
 
-###  Verilog to Routing (VTR)
+### Verilog to Routing (VTR)
 
 - XML - based architecture description language to describe the custom FPGA architecture
-- **Download Link:** https://github.com/verilog-to-routing/vtr-verilog-to-routing
-- **Documentation:** https://docs.verilogtorouting.org
+- **Download Link:** <https://github.com/verilog-to-routing/vtr-verilog-to-routing>
+- **Documentation:** <https://docs.verilogtorouting.org>
 
 - Basically it maps our RTL to a placed and routed FPGA
-- 
+  
 ![image](https://user-images.githubusercontent.com/66086031/171636949-5d0da10d-f612-44c5-8fc1-5135ab87efcf.png)
 
 ### VTR FLow
@@ -416,7 +434,6 @@ Visit this repo to install OpenFPGA: https://github.com/lnis-uofu/OpenFPGA
 
 i. We shall first run VPR on a Pre-synthesized circuit.
 ii. Then, we shall run entire VPR Flow from RTL
-
 
 ### VPR Flow on a Pre-Synthesized Design
 
@@ -463,11 +480,12 @@ This is the general structure of a Earch.xml file. It describes the FPGA Archite
 ```blif
 .names - LUTS
 ```
+
 #### Lab on VPR on a Pre-Synthesized Design
 
 i. Create a working directory.
 
-```console 
+```console
 mkdir -p vtr_work/quickstart/vpr_tseng
 cd ./vtr_work/quickstart/vpr_tseng
 ```
@@ -491,6 +509,7 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 ![image](https://user-images.githubusercontent.com/66086031/171651073-a890cfff-692d-4fb8-aa4f-332aa7aced28.png)
 
 iii. Additional parameter can be applied here
+
 ```console
 $VTR_ROOT/vpr/vpr \
 $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
@@ -511,18 +530,21 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 
 #### Timing Reports
 
-##### Setup Slack
+##### VPR Setup Slack
+
 ![image](https://user-images.githubusercontent.com/66086031/171881471-b6d87fc5-c0e4-4eff-94b0-7f3cc24ee1f4.png)
+
 - Here, the setup slack is violated as no clock constraints are specified.
 
-##### Hold Slack
+##### VPR Hold Slack
+
 ![image](https://user-images.githubusercontent.com/66086031/171881668-1a117227-631b-4a1d-8275-37b6bcb18082.png)
 
 #### Constraints
 
 i. Create a ```tseng.sdc``` file
 
-```
+```sdc
 create_clock -period 10 -name pclk
 set_input_delay -clock pclk -max 0 [get_ports {*}]
 set_output_delay -clock pclk -max 0 [get_ports {*}]
@@ -530,10 +552,9 @@ set_output_delay -clock pclk -max 0 [get_ports {*}]
 
 ii. Run include sdc file as part of the command
 
-```
+```console
 $VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif --route_chan_width 100 --disp on --sdc_file tseng.sdc 
 ```
-
 
 - Now we can see that the setup slack is met.
 
@@ -545,18 +566,19 @@ $VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tsen
 
 i. Run the automated VTR Flow command.
 
-```
+```console
 $VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
       /home/knavin2002/Desktop/openfpga/Day\ 2/vtr_work/counter.v \
       $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
       -temp_dir . --route_chan_width 100
 
 ```
+
 ![image](https://user-images.githubusercontent.com/66086031/171900694-f28af658-1fc6-4039-b4fa-fc02df185784.png)
 
 ii. We can run vpr (flow analysis) on the pre-vpr file.blif file.
 
-```
+```console
 $VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
                   counter --circuit_file counter.pre-vpr.blif \
                   --route_chan_width 100 \
@@ -567,7 +589,7 @@ $VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 
 iii. Now run the entire VPR Flow
 
-```
+```console
 $VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
                   counter --circuit_file counter.pre-vpr.blif \
                   --route_chan_width 100 --disp on
@@ -578,7 +600,7 @@ $VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 
 iv. Generation of Post implementation netlist
 
-```
+```console
 $VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
                   counter.pre-vpr.blif \
                   --gen_post_synthesis_netlist on
@@ -600,14 +622,13 @@ v. Simulation in Xilinx Vivaldo. Include post_synthesis file, testbench and prim
 
 ![image](https://user-images.githubusercontent.com/66086031/171911596-7b329a31-01c7-4231-9409-3918527af000.png)
 
-
-#### Timing Analysis
+#### VTR Timing Analysis
 
 - We have to pass the `.blif` to the VPR Flow otherwise the tool will have its own constraints.
 
 i. Create a `constraints.sdc` file. Create constraints as follows. Also change the name of the clock in the pre-vpr.blif as `up_counter_clk`.
 
-```
+```sdc
 create_clock -period 10 up_counter_clk
 set_input_delay -clock up_counter_clk -max 0 [get_ports {*}]
 set_output_delay -clock up_counter_clk -max 0 [get_ports {*}]
@@ -615,7 +636,7 @@ set_output_delay -clock up_counter_clk -max 0 [get_ports {*}]
 
 ii. Now run VPR flow with te timing constraints.
 
-```
+```console
   $VTR_ROOT/vpr/vpr \
   $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
   counter.pre-vpr.blif --route_chan_width 100 \
@@ -654,7 +675,7 @@ i. Open `vpr_stdout.log` file.
 
 i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 
-```
+```console
   $VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
   /home/knavin2002/Desktop/openfpga/Day\ 2/vtr_work/counter.v \
   $VTR_ROOT/vtr_flow/arch/timing/EArch.xml -power -cmos_tech \
@@ -666,7 +687,7 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 
 ![image](https://user-images.githubusercontent.com/66086031/171974575-3da79a6f-4fc5-4819-b874-9b795d561b9a.png)
 
-
+### Comparison of Basys3 and VTR Flow
 
 ## Acknowledgements
 
