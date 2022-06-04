@@ -1,0 +1,237 @@
+#Timing report of worst 8 path(s)
+# Unit scale: 1e-09 seconds
+# Output precision: 3
+
+#Path 1
+Startpoint: up_counter^out~0_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : up_counter^out~0_FF.D[0] (.latch clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~0_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~0_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+n22_1.in[1] (.names)                                             0.000     0.124
+n22_1.out[0] (.names)                                            0.235     0.359
+up_counter^out~0_FF.D[0] (.latch)                                0.000     0.359
+data arrival time                                                          0.359
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~0_FF.clk[0] (.latch)                              0.000     0.000
+clock uncertainty                                                0.000     0.000
+cell hold time                                                   0.066     0.066
+data required time                                                         0.066
+--------------------------------------------------------------------------------
+data required time                                                        -0.066
+data arrival time                                                          0.359
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.293
+
+
+#Path 2
+Startpoint: up_counter^out~1_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : up_counter^out~1_FF.D[0] (.latch clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~1_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~1_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+n37_1.in[1] (.names)                                             0.000     0.124
+n37_1.out[0] (.names)                                            0.235     0.359
+up_counter^out~1_FF.D[0] (.latch)                                0.000     0.359
+data arrival time                                                          0.359
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~1_FF.clk[0] (.latch)                              0.000     0.000
+clock uncertainty                                                0.000     0.000
+cell hold time                                                   0.066     0.066
+data required time                                                         0.066
+--------------------------------------------------------------------------------
+data required time                                                        -0.066
+data arrival time                                                          0.359
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.293
+
+
+#Path 3
+Startpoint: up_counter^out~2_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : up_counter^out~2_FF.D[0] (.latch clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~2_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~2_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+n32_1.in[1] (.names)                                             0.000     0.124
+n32_1.out[0] (.names)                                            0.235     0.359
+up_counter^out~2_FF.D[0] (.latch)                                0.000     0.359
+data arrival time                                                          0.359
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~2_FF.clk[0] (.latch)                              0.000     0.000
+clock uncertainty                                                0.000     0.000
+cell hold time                                                   0.066     0.066
+data required time                                                         0.066
+--------------------------------------------------------------------------------
+data required time                                                        -0.066
+data arrival time                                                          0.359
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.293
+
+
+#Path 4
+Startpoint: up_counter^out~3_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : up_counter^out~3_FF.D[0] (.latch clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~3_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~3_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+n27_1.in[1] (.names)                                             0.000     0.124
+n27_1.out[0] (.names)                                            0.235     0.359
+up_counter^out~3_FF.D[0] (.latch)                                0.000     0.359
+data arrival time                                                          0.359
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~3_FF.clk[0] (.latch)                              0.000     0.000
+clock uncertainty                                                0.000     0.000
+cell hold time                                                   0.066     0.066
+data required time                                                         0.066
+--------------------------------------------------------------------------------
+data required time                                                        -0.066
+data arrival time                                                          0.359
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.293
+
+
+#Path 5
+Startpoint: up_counter^out~0_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : out:up_counter^out~0.outpad[0] (.output clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~0_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~0_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+out:up_counter^out~0.outpad[0] (.output)                         0.227     0.351
+data arrival time                                                          0.351
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+clock uncertainty                                                0.000     0.000
+output external delay                                            0.000     0.000
+data required time                                                         0.000
+--------------------------------------------------------------------------------
+data required time                                                        -0.000
+data arrival time                                                          0.351
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.351
+
+
+#Path 6
+Startpoint: up_counter^out~3_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : out:up_counter^out~3.outpad[0] (.output clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~3_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~3_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+out:up_counter^out~3.outpad[0] (.output)                         0.303     0.427
+data arrival time                                                          0.427
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+clock uncertainty                                                0.000     0.000
+output external delay                                            0.000     0.000
+data required time                                                         0.000
+--------------------------------------------------------------------------------
+data required time                                                        -0.000
+data arrival time                                                          0.427
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.427
+
+
+#Path 7
+Startpoint: up_counter^out~2_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : out:up_counter^out~2.outpad[0] (.output clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~2_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~2_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+out:up_counter^out~2.outpad[0] (.output)                         0.379     0.503
+data arrival time                                                          0.503
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+clock uncertainty                                                0.000     0.000
+output external delay                                            0.000     0.000
+data required time                                                         0.000
+--------------------------------------------------------------------------------
+data required time                                                        -0.000
+data arrival time                                                          0.503
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.503
+
+
+#Path 8
+Startpoint: up_counter^out~1_FF.Q[0] (.latch clocked by up_counter^clk)
+Endpoint  : out:up_counter^out~1.outpad[0] (.output clocked by up_counter^clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+up_counter^clk.inpad[0] (.input)                                 0.000     0.000
+up_counter^out~1_FF.clk[0] (.latch)                              0.000     0.000
+up_counter^out~1_FF.Q[0] (.latch) [clock-to-output]              0.124     0.124
+out:up_counter^out~1.outpad[0] (.output)                         0.537     0.661
+data arrival time                                                          0.661
+
+clock up_counter^clk (rise edge)                                 0.000     0.000
+clock source latency                                             0.000     0.000
+clock uncertainty                                                0.000     0.000
+output external delay                                            0.000     0.000
+data required time                                                         0.000
+--------------------------------------------------------------------------------
+data required time                                                        -0.000
+data arrival time                                                          0.661
+--------------------------------------------------------------------------------
+slack (MET)                                                                0.661
+
+
+#End of timing report
