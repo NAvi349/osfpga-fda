@@ -55,6 +55,18 @@
       - [Area Analysis](#area-analysis)
       - [Power Analysis](#power-analysis)
     - [Comparison of Basys3 and VTR Flow](#comparison-of-basys3-and-vtr-flow)
+      - [Post Implementation Timing](#post-implementation-timing)
+      - [Area Comparison](#area-comparison)
+      - [Power Comparison](#power-comparison)
+  - [Day 3 RISC - V core Programming on Vivado](#day-3-risc---v-core-programming-on-vivado)
+    - [RTL-to-Synthesis](#rtl-to-synthesis)
+      - [Behavioural Simulation](#behavioural-simulation)
+      - [Elaboration](#elaboration)
+    - [Synthesis-to-bitstream](#synthesis-to-bitstream)
+      - [Core Resource Utilization](#core-resource-utilization)
+      - [Schematic](#schematic)
+      - [Implementatiom](#implementatiom)
+      - [Bitstream-Generation for RISC - V core](#bitstream-generation-for-risc---v-core)
   - [Acknowledgements](#acknowledgements)
 
 ## Day 1
@@ -698,7 +710,6 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 - `.sdc` file
 - Clock period `10ns` or `100 MHz`
   
-
 | Parameter                        | Basys3 | VTR Earch |
 | :------------------------------- | :----: | :-------: |
 | **Technology**                   |        |           |
@@ -713,17 +724,19 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 | **Worst Negative Slack - Setup** |        |     $0.34$     |
 | **Worst Negative Slack - Hold**  |        |    $0.293$     |
 
-#### Area
+#### Area Comparison
+
 ![image](https://user-images.githubusercontent.com/66086031/171983481-1f9c9f95-bd65-48a9-b924-b53d66dcc5dd.png)
 
-#### Power
+#### Power Comparison
+
 ![image](https://user-images.githubusercontent.com/66086031/171983532-22cb6a7d-72f5-4926-95a5-14a0229087b4.png)
 
 ## Day 3 RISC - V core Programming on Vivado
 
 - Now we shall go through the Vivado flow for the RVMyth Processor
-- RISC - V RVMyth: https://github.com/NAvi349/riscv-myth-ws
-- Converting TL - Verilog to Verilog: https://github.com/NAvi349/mixed-riscv-soc
+- RISC - V RVMyth: <https://github.com/NAvi349/riscv-myth-ws>
+- Converting TL - Verilog to Verilog: <https://github.com/NAvi349/mixed-riscv-soc>
 - We shall test a program that sums numbers from 1 to N.
 - N is 9 for this example.
 - $Sumof(1 to 9) = 45$
@@ -765,10 +778,9 @@ vi. Run synthesis
 
 ![image](https://user-images.githubusercontent.com/66086031/171987948-23ad11fc-8ff0-4d84-91b6-f5b79f4de115.png)
 
+### Synthesis-to-bitstream
 
-### Synthesis-to-bitstream 
-
-#### Resource Utilization
+#### Core Resource Utilization
 
 ![image](https://user-images.githubusercontent.com/66086031/171988029-ec6ce57f-287f-4c68-a4c2-bb5a4c66c9c7.png)
 
@@ -787,7 +799,7 @@ ii. Report timing summary
 
 - All the user constraints are met.
 
-#### Bitstream Generation
+#### Bitstream-Generation for RISC - V core
 
 i. Run Bitstream generation.
 
@@ -795,12 +807,6 @@ i. Run Bitstream generation.
 
 ![image](https://user-images.githubusercontent.com/66086031/171988392-1ec53703-30a8-4213-bf66-99ee4a4d3423.png)
 
-
-
-
-
-
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
-
