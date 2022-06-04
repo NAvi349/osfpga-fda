@@ -588,7 +588,7 @@ $VTR_ROOT/vpr/vpr $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 
 - To run the post implementation netlist, we need primitves file
 
-v. Simulation in Xilinx Vivaldo
+v. Simulation in Xilinx Vivaldo. Include post_synthesis file, testbench and primitives file
 
 ![image](https://user-images.githubusercontent.com/66086031/171908726-a64f6a64-9934-4507-b0f1-f2c6b1cdced2.png)
 
