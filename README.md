@@ -719,6 +719,86 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 #### Power
 ![image](https://user-images.githubusercontent.com/66086031/171983532-22cb6a7d-72f5-4926-95a5-14a0229087b4.png)
 
+## Day 3 RISC - V core Programming on Vivado
+
+- Now we shall go through the Vivado flow for the RVMyth Processor
+- RISC - V RVMyth: https://github.com/NAvi349/riscv-myth-ws
+- Converting TL - Verilog to Verilog: https://github.com/NAvi349/mixed-riscv-soc
+- We shall test a program that sums numbers from 1 to N.
+- N is 9 for this example.
+- $Sumof(1 to 9) = 45$
+
+### RTL-to-Synthesis
+
+#### Behavioural Simulation
+
+i. Create a new project and add the core as a source and add a testbench as simulation source.
+
+ii. Run Behavioural Simulation.
+
+![image](https://user-images.githubusercontent.com/66086031/171986102-c10f384a-112b-4511-b457-ad81278c5264.png)
+
+- We can see the output is 45 as expected.
+
+#### Elaboration
+
+i. Assign pin number as shown.
+
+![image](https://user-images.githubusercontent.com/66086031/171987099-4661a8a0-65d4-41be-aa14-2345161f359e.png)
+
+ii. We shall use ILA to observer the outputs. So remove the output ports and declare it as reg.
+
+![image](https://user-images.githubusercontent.com/66086031/171987204-05d181d8-7ce4-4bfe-91f4-b77b22445158.png)
+
+iii. Run Elaboration again
+
+![image](https://user-images.githubusercontent.com/66086031/171987490-4f9efea2-7552-4313-99a4-f1618396d95c.png)
+
+iv. From IP Catalog instantiate ILA and connect to the RISC - V core
+
+![image](https://user-images.githubusercontent.com/66086031/171987650-cd0a65aa-e2c3-47a3-8f3d-9ed1de6f6975.png)
+
+v. Run Synthesis and then add constraints
+![image](https://user-images.githubusercontent.com/66086031/171987874-1772e9b2-6305-49d6-aa7e-934f366f8cb2.png)
+
+vi. Run synthesis
+
+![image](https://user-images.githubusercontent.com/66086031/171987948-23ad11fc-8ff0-4d84-91b6-f5b79f4de115.png)
+
+
+### Synthesis-to-bitstream 
+
+#### Resource Utilization
+
+![image](https://user-images.githubusercontent.com/66086031/171988029-ec6ce57f-287f-4c68-a4c2-bb5a4c66c9c7.png)
+
+#### Schematic
+
+![image](https://user-images.githubusercontent.com/66086031/171988057-57b6190f-9844-4654-801e-8cabbf2974ad.png)
+
+#### Implementatiom
+
+i. Run implementation.
+
+![image](https://user-images.githubusercontent.com/66086031/171988247-aa477dfb-5425-42a7-94a3-9926d786c3d0.png)
+
+ii. Report timing summary
+![image](https://user-images.githubusercontent.com/66086031/171988266-031f75e3-337b-4240-b96e-470b785ef12e.png)
+
+- All the user constraints are met.
+
+#### Bitstream Generation
+
+i. Run Bitstream generation.
+
+![image](https://user-images.githubusercontent.com/66086031/171988364-a56f1871-4994-40a7-8f00-657bcb95d85c.png)
+
+![image](https://user-images.githubusercontent.com/66086031/171988392-1ec53703-30a8-4213-bf66-99ee4a4d3423.png)
+
+
+
+
+
 
 ## Acknowledgements
 
