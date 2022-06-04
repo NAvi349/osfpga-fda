@@ -788,13 +788,14 @@ vi. Run synthesis
 
 ![image](https://user-images.githubusercontent.com/66086031/171988057-57b6190f-9844-4654-801e-8cabbf2974ad.png)
 
-#### Implementatiom
+#### Implementation
 
 i. Run implementation.
 
 ![image](https://user-images.githubusercontent.com/66086031/171988247-aa477dfb-5425-42a7-94a3-9926d786c3d0.png)
 
 ii. Report timing summary
+
 ![image](https://user-images.githubusercontent.com/66086031/171988266-031f75e3-337b-4240-b96e-470b785ef12e.png)
 
 - All the user constraints are met.
