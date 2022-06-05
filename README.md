@@ -986,6 +986,17 @@ iii. Add the options for power analysis in `vpr_arch.xml` file.
 
 - We shall fall the same steps for the RISC - V RVMyth Core
 
+
+i. Git clone the SOFA repo as before.
+
+ii. Make these changes in the corresponding files.
+
+![image](https://user-images.githubusercontent.com/66086031/172039477-23d1c3f6-ff44-4135-8f95-cc033f403b51.png)
+
+![image](https://user-images.githubusercontent.com/66086031/172039505-66ec5bf7-8ab8-4bcf-bc41-7870c9bf283f.png)
+
+
+
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
