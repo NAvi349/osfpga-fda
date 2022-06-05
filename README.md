@@ -31,7 +31,6 @@
       - [Timing Analysis](#timing-analysis)
       - [Power](#power)
       - [Area](#area)
-      - [Vivado Summary](#vivado-summary)
     - [Virtual Input/Output Counter](#virtual-inputoutput-counter)
     - [VIO Code](#vio-code)
     - [Elaboration and Pin Assignment](#elaboration-and-pin-assignment)
@@ -40,7 +39,7 @@
     - [Intro to OpenFPGA](#intro-to-openfpga)
     - [Custom FPGAs](#custom-fpgas)
     - [Verilog to Routing (VTR)](#verilog-to-routing-vtr)
-    - [VTR FLow](#vtr-flow)
+    - [VTR Flow](#vtr-flow)
     - [VPR Flow on a Pre-Synthesized Design](#vpr-flow-on-a-pre-synthesized-design)
       - [.blif file](#blif-file)
       - [Lab on VPR on a Pre-Synthesized Design](#lab-on-vpr-on-a-pre-synthesized-design)
@@ -49,7 +48,7 @@
         - [VPR Setup Slack](#vpr-setup-slack)
         - [VPR Hold Slack](#vpr-hold-slack)
       - [Constraints](#constraints)
-    - [VTR Flow](#vtr-flow-1)
+    - [Counter VTR Flow](#counter-vtr-flow)
       - [VTR Synthesis and Simulation](#vtr-synthesis-and-simulation)
       - [VTR Timing Analysis](#vtr-timing-analysis)
       - [Area Analysis](#area-analysis)
@@ -65,7 +64,7 @@
     - [Synthesis-to-bitstream](#synthesis-to-bitstream)
       - [Core Resource Utilization](#core-resource-utilization)
       - [Schematic](#schematic)
-      - [Implementation](#implementation-1)
+      - [RISC - V Implementation](#risc---v-implementation)
       - [Bitstream-Generation for RISC - V core](#bitstream-generation-for-risc---v-core)
   - [Day 4 - SOFA FPGA Fabric IP](#day-4---sofa-fpga-fabric-ip)
     - [Intro to SOFA](#intro-to-sofa)
@@ -74,7 +73,10 @@
       - [SOFA counter Timing Report](#sofa-counter-timing-report)
     - [SOFA counter Post Implementation](#sofa-counter-post-implementation)
     - [SOFA Power Analysis](#sofa-power-analysis)
-  - [Day 5](#day-5)
+  - [Day 5 SOFA RISC - V Core](#day-5-sofa-risc---v-core)
+    - [RISC - V Resource Utilization](#risc---v-resource-utilization)
+    - [SOFA RISC - V Timing Reports](#sofa-risc---v-timing-reports)
+    - [SOFA RISC - V Post Implementation](#sofa-risc---v-post-implementation)
   - [Acknowledgements](#acknowledgements)
 
 ## Day 1
@@ -149,7 +151,7 @@ An FPGA Architecture consists of
 - The output of the Mux feeds into the Flip Flop.
 - A N - input Mux can be used to implement any N - input Function or some N + 1 input function with an additional NOT gate.
 
-![image](https://user-images.githubusercontent.com/66086031/171421974-95cb4404-285a-4fcf-87a7-1e1e86fa5db9.png)
+<!-- ![image](https://user-images.githubusercontent.com/66086031/171421974-95cb4404-285a-4fcf-87a7-1e1e86fa5db9.png) -->
 
 #### FPGA Programming
 
@@ -160,11 +162,16 @@ An FPGA Architecture consists of
 
 ```mermaid
 graph TD;
- A[Architectural Description] --> B[RTL Design and testbench]
- B --> C[Behavioral Simulation]
-```
+  A[Architectural Description] --> B[RTL Design and testbench]
+  B --> C[Behavioral Simulation]
+  C --> D["Synthesis (Timing Analysis)"]
+  D --> E["Implementation Place/Route (Timing Analysis)"]
+  E --> F[Bitstream generation]
+  F --> G[FPGA Programming]
 
-![image](https://user-images.githubusercontent.com/66086031/171422258-df96f7d1-5377-49af-ae48-7eba5c7922ce.png)
+  H[Timing constraints] --> D
+  I[Pin Assignments] --> D
+```
 
 #### Synthesizable and Non - Synthesizable
 
@@ -245,7 +252,8 @@ i. Type `vivado` in the terminal.
 
 ii. Create a new project.
 
-iii. Do the following settings
+iii. Do the following settings.
+
 ![image](https://user-images.githubusercontent.com/66086031/171430681-824be24d-7f03-4c07-82f8-d7fe3da126c9.png)
 
 iv. Click finish.
@@ -366,9 +374,9 @@ ii. We can also view the detailed path report for each path. It specifies the st
 
 ![image](https://user-images.githubusercontent.com/66086031/171528074-5dab274f-06c5-4906-b1a4-9065509d6140.png)
 
-#### Vivado Summary
+<!-- #### Vivado Summary
 
-(insert tables of all the data)
+(insert tables of all the data) -->
 
 ### Virtual Input/Output Counter
 
@@ -384,7 +392,7 @@ ii. We can also view the detailed path report for each path. It specifies the st
 - Make these changes. The reset and clock are come from VIO. So they are no longer input ports. The counter output will be probed by the VIO, so it is no longer an output port.
 
 **VIO Inputs:** Slow Clock, Counter Output
-**VIO Outputs:**Reset
+**VIO Outputs:** Reset
 
 ![image](https://user-images.githubusercontent.com/66086031/171530603-6fbabc7c-6099-4305-a947-f58444616006.png)
 
@@ -431,13 +439,12 @@ vi. Use this to instantiate the VIO in the `.v` file
 
 ### Custom FPGAs
 
-![image](https://user-images.githubusercontent.com/66086031/171633283-a0b723c1-a5e2-4192-9128-8b70aadff69c.png)
-
 - For certain applications custom-made FPGAs provide huge performance gain.
 - Custom FPGA architectures are expensive to produce
 - OpenFPGA allows us to customize our own FPGA fabrix using a set of templates
 - Generate verilog netlists based on an XML file - VPR ( Versatile Place and Route )
-- Automatically generates Verilog testbenches
+- Automatically generates Verilog testbenches'
+- Bitstream generation based on XML format
 
 Visit this repo to install OpenFPGA: <https://github.com/lnis-uofu/OpenFPGA>
 
@@ -449,12 +456,22 @@ Visit this repo to install OpenFPGA: <https://github.com/lnis-uofu/OpenFPGA>
 
 - Basically it maps our RTL to a placed and routed FPGA
 
-![image](https://user-images.githubusercontent.com/66086031/171636949-5d0da10d-f612-44c5-8fc1-5135ab87efcf.png)
+```mermaid
+graph TD;
+  A[Verilog Digital Circuit] --> E["Elaboration & Synthesis (Odin II)"]
+  B[XML FPGA Architecture] --> E
+  E --> L
+  L["Logic Optimization & Technology Mapping (ABC)"] --> P["Pack the netlist, Placement, Routing and Timing Analysis (VPR)"]
 
-### VTR FLow
+  P --> O[Output Statistics]
+  P --> PI[Post-Implementation netlist]
+```
 
+### VTR Flow
+
+<!-- 
 ![image](https://user-images.githubusercontent.com/66086031/171637784-22745a03-dd8f-4078-b0fa-06035be33286.png)
-
+ -->
 i. We shall first run VPR on a Pre-synthesized circuit.
 ii. Then, we shall run entire VPR Flow from RTL
 
@@ -583,7 +600,7 @@ $VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tsen
 
 ![image](https://user-images.githubusercontent.com/66086031/171883334-6cdab73b-d178-4df3-88e3-071e0a7791f2.png)
 
-### VTR Flow
+### Counter VTR Flow
 
 #### VTR Synthesis and Simulation
 
@@ -716,32 +733,40 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 
 #### Post Implementation Timing
 
-![image](https://user-images.githubusercontent.com/66086031/171983435-7c5bf0e0-d847-4eed-ba6f-8acc05c28653.png)
-
 - `.sdc` file
 - Clock period `10ns` or `100 MHz`
 
-| Parameter                        | Basys3 | VTR Earch |
-| :------------------------------- | :----: | :-------: |
-| **Technology**                   |        |           |
-| **Worst Negative Slack - Setup** |        |           |
-| **Worst Negative Slack - Hold**  |        |           |
+| Parameter                        | Basys3  | VTR Earch |
+| :------------------------------- | :-----: | :-------: |
+| **Technology**                   |  28 nm  |   40 nm   |
+| **Worst Negative Slack - Setup** | 5.77 ns |  8.54 ns  |
+| **Worst Negative Slack - Hold**  | 0.23 ns | 0.293 ns  |
 
-- Min. Slack
+- Minimum Slack
 
-| Parameter                        | Basys3 | VTR Earch (ns) |
-| :------------------------------- | :----: | :------------: |
-| **Minimum Time Period**          |        |     $1.8$      |
-| **Worst Negative Slack - Setup** |        |     $0.34$     |
-| **Worst Negative Slack - Hold**  |        |    $0.293$     |
+| Parameter                        | Basys3 (ns) | VTR Earch (ns) |
+| :------------------------------- | :---------: | :------------: |
+| **Minimum Time Period**          |     3.5     |      1.8       |
+| **Worst Negative Slack - Setup** |    0.41     |      0.34      |
+| **Worst Negative Slack - Hold**  |    0.33     |     0.293      |
 
 #### Area Comparison
 
-![image](https://user-images.githubusercontent.com/66086031/171983481-1f9c9f95-bd65-48a9-b924-b53d66dcc5dd.png)
+| Parameter      | Basys3 | VTR Earch (ns) |
+| :------------- | :----: | :------------: |
+| **LUTs**       |   23   |       18       |
+| **I/O**        |   6    |       7        |
+| **Flip Flops** |   31   |       4        |
 
 #### Power Comparison
 
-![image](https://user-images.githubusercontent.com/66086031/171983532-22cb6a7d-72f5-4926-95a5-14a0229087b4.png)
+| Parameter   | Basys3 | VTR Earch (ns) |
+| :---------- | :----: | :------------: |
+| **Clocks**  |  1e-3  |      1e-4      |
+| **Signals** |  1e-3  |     1.4e-5     |
+| **Logic**   |  1e-3  |     8.2e-5     |
+| **I/O**     | 1.1e-2 |       0        |
+| **Dynamic** | 1.2e-2 |                |
 
 ## Day 3 RISC - V core Programming on Vivado
 
@@ -799,7 +824,7 @@ vi. Run synthesis
 
 ![image](https://user-images.githubusercontent.com/66086031/171988057-57b6190f-9844-4654-801e-8cabbf2974ad.png)
 
-#### Implementation
+#### RISC - V Implementation
 
 i. Run implementation.
 
@@ -990,11 +1015,9 @@ v. See the output in `counter.power`.
 
 ![image](https://user-images.githubusercontent.com/66086031/172055323-9dfd4bf4-76d9-4223-a05b-ceb6254fcb0c.png)
 
-
 ## Day 5 SOFA RISC - V Core
 
 - We shall fall the same steps for the RISC - V RVMyth Core
-
 
 i. Git clone the SOFA repo as before.
 
@@ -1005,7 +1028,6 @@ ii. Make these changes in the corresponding files. Also refer to the files in th
 ![image](https://user-images.githubusercontent.com/66086031/172055379-e21906be-c393-46e9-ac61-00f7dd3a7a37.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/172055461-bdebf1ba-9f32-48b8-9928-c4259bf4f075.png)
-
 
 iii. Run makefile command
 
@@ -1018,9 +1040,11 @@ iv. Open `openfpgashell.log`.
 ### RISC - V Resource Utilization
 
 - Open `vpr_stdout.log` for the output statistics.
+
 ![image](https://user-images.githubusercontent.com/66086031/172056227-528620e4-b311-46d8-9ec4-7c98e109630d.png)
 
 - Logic Elements
+
 ![image](https://user-images.githubusercontent.com/66086031/172056253-a34ca07d-5bdb-404a-849d-8d3cfe94aa88.png)
 
 ### SOFA RISC - V Timing Reports
@@ -1052,6 +1076,7 @@ iii. Run the makefile command.
 ### SOFA RISC - V Post Implementation
 
 i. Add the required argument.
+
 ![image](https://user-images.githubusercontent.com/66086031/172057153-d7edf08e-1dbc-4932-87f3-8a00a9930da3.png)
 
 ii. Run makefile
@@ -1066,7 +1091,9 @@ iii. View the `core_post_synthesis.v`
 
 ![image](https://user-images.githubusercontent.com/66086031/172058278-64e223b9-f6bd-4f02-b71d-122e6f45f4ec.png)
 
-
 ## Acknowledgements
 
+- Kunal Ghosh, Founder, VSD
+- Nandita Rao, Course Instructor
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
+
