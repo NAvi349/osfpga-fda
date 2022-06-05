@@ -65,8 +65,16 @@
     - [Synthesis-to-bitstream](#synthesis-to-bitstream)
       - [Core Resource Utilization](#core-resource-utilization)
       - [Schematic](#schematic)
-      - [Implementatiom](#implementatiom)
+      - [Implementation](#implementation-1)
       - [Bitstream-Generation for RISC - V core](#bitstream-generation-for-risc---v-core)
+  - [Day 4 - SOFA FPGA Fabric IP](#day-4---sofa-fpga-fabric-ip)
+    - [Intro to SOFA](#intro-to-sofa)
+      - [SOFA counter Statistics](#sofa-counter-statistics)
+    - [SOFA counter Timing Analysis](#sofa-counter-timing-analysis)
+      - [SOFA counter Timing Report](#sofa-counter-timing-report)
+    - [SOFA counter Post Implementation](#sofa-counter-post-implementation)
+    - [SOFA Power Analysis](#sofa-power-analysis)
+  - [Day 5](#day-5)
   - [Acknowledgements](#acknowledgements)
 
 ## Day 1
@@ -110,7 +118,7 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 #### FPGA Architecture
 
 - Can be used to implement any combinatorial and sequential design.
- 
+
 ![image](https://user-images.githubusercontent.com/66086031/171312512-8e650388-62ec-40c5-9e9d-f9fd99baa14f.png)
 
 (Diagram taken from Course Slide for reference)
@@ -118,9 +126,11 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 An FPGA Architecture consists of
 
 - **Configurable Logic Blocks**
+
   - It contains an N-input Lookup Tables, Carry chain, Multiplexer and a Flip Flop.
 
 - **Programmable Interconnects**
+
   - The wires which connect the CLBs.
 
 - **Programmable I/O**
@@ -187,7 +197,7 @@ graph TD;
 <details>
  <summary> Code </summary>
 
-```verilog  
+```verilog
 module counter(clk,reset,count);
 input clk,reset;
 output reg [3:0] count = 4'b0000;
@@ -213,7 +223,7 @@ else
         end
     end
  end
-  
+
   always @ (posedge clk_div) begin
    if (reset)
    begin
@@ -224,14 +234,14 @@ else
       count <= count + 1'b1;
    end
   end
-endmodule                
+endmodule
 ```
 
 </details>
 
 ### Vivado-counter example
 
-i. Type ```vivado``` in the terminal.
+i. Type `vivado` in the terminal.
 
 ii. Create a new project.
 
@@ -256,7 +266,7 @@ vii. Run Elaboration
 
 ![image](https://user-images.githubusercontent.com/66086031/171467301-0a08fd2e-4885-4799-928c-e92d318f9d98.png)
 
-viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` file.
+viii. Do the I/O pin assignment as follows and save as `constraints.xdc` file.
 
 ![image](https://user-images.githubusercontent.com/66086031/171456676-0166c665-f6ec-439f-b8ea-9f144d7cb4e1.png)
 ![image](https://user-images.githubusercontent.com/66086031/171457762-be279c03-ed55-4ecb-8c16-7d7a5545ebed.png)
@@ -267,7 +277,7 @@ viii. Do the I/O pin assignment as follows and save as ```constraints.xdc``` fil
 
 ![image](https://user-images.githubusercontent.com/66086031/166118620-dd932eef-2e14-4689-a24d-d1e1e2098bcb.png)
 
-- The data should be available **Tsetup**  before the **capturing clock edge** comes.
+- The data should be available **Tsetup** before the **capturing clock edge** comes.
 - We need **fast cells** to satisfy **Max Delay** constraints.
 - Setup time constraints are always calculated with respect to the next clock edge.
 
@@ -394,11 +404,11 @@ iii. Configure as shown.
 
 iv. Click generate
 
-v. Go to IP Sources and click on Instantion Template and copy these lines from the ```.veo``` file.
+v. Go to IP Sources and click on Instantion Template and copy these lines from the `.veo` file.
 
 ![image](https://user-images.githubusercontent.com/66086031/171530413-62af72a2-f647-454d-b0b4-c5e3fbccf012.png)
 
-vi. Use this to instantiate the VIO in the ```.v``` file
+vi. Use this to instantiate the VIO in the `.v` file
 
 ![image](https://user-images.githubusercontent.com/66086031/171530512-b9e79bc6-61a9-4883-9acd-4b3398872145.png)
 
@@ -438,7 +448,7 @@ Visit this repo to install OpenFPGA: <https://github.com/lnis-uofu/OpenFPGA>
 - **Documentation:** <https://docs.verilogtorouting.org>
 
 - Basically it maps our RTL to a placed and routed FPGA
-  
+
 ![image](https://user-images.githubusercontent.com/66086031/171636949-5d0da10d-f612-44c5-8fc1-5135ab87efcf.png)
 
 ### VTR FLow
@@ -471,20 +481,20 @@ This is the general structure of a Earch.xml file. It describes the FPGA Archite
     <tile name = "">
     </tile>
   </tiles>
-  <layout> <!-- Grid Layout, aspect ratio --> 
+  <layout> <!-- Grid Layout, aspect ratio -->
   </layout>
   <device> <!-- Transistor definitions -->
   </device>
-  
-  <switchlist>    
+
+  <switchlist>
   </switchlist>
-  
+
   <segmentlist>
   </segmentlist>
-             
+
   <directlist>
   </directlist>
-  
+
 </architecture>
 ```
 
@@ -555,7 +565,7 @@ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \
 
 #### Constraints
 
-i. Create a ```tseng.sdc``` file
+i. Create a `tseng.sdc` file
 
 ```sdc
 create_clock -period 10 -name pclk
@@ -566,7 +576,7 @@ set_output_delay -clock pclk -max 0 [get_ports {*}]
 ii. Run include sdc file as part of the command
 
 ```console
-$VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif --route_chan_width 100 --disp on --sdc_file tseng.sdc 
+$VTR_ROOT/vtr_flow/arch/timing/EArch.xml $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif --route_chan_width 100 --disp on --sdc_file tseng.sdc
 ```
 
 - Now we can see that the setup slack is met.
@@ -710,7 +720,7 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 
 - `.sdc` file
 - Clock period `10ns` or `100 MHz`
-  
+
 | Parameter                        | Basys3 | VTR Earch |
 | :------------------------------- | :----: | :-------: |
 | **Technology**                   |        |           |
@@ -718,7 +728,7 @@ i. Include the `-power` and the `cmos_tech` xml file the vtr flow command.
 | **Worst Negative Slack - Hold**  |        |           |
 
 - Min. Slack
-  
+
 | Parameter                        | Basys3 | VTR Earch (ns) |
 | :------------------------------- | :----: | :------------: |
 | **Minimum Time Period**          |        |     $1.8$      |
@@ -809,7 +819,6 @@ i. Run Bitstream generation.
 
 ![image](https://user-images.githubusercontent.com/66086031/171988392-1ec53703-30a8-4213-bf66-99ee4a4d3423.png)
 
-
 ## Day 4 - SOFA FPGA Fabric IP
 
 ### Intro to SOFA
@@ -818,7 +827,7 @@ i. Run Bitstream generation.
 - Open-source FPGA IPs
 - Skywater 130nm PDK and OpenFPGA Framework
 - HD - High Density FPGAs - embedded FPGAs.
-- **Documentation and installation:** https://github.com/lnis-uofu/SOFA
+- **Documentation and installation:** <https://github.com/lnis-uofu/SOFA>
 
 i. Clone the repository
 
@@ -842,7 +851,7 @@ iii. Open `task_simulation.conf`
 
 iv. Add the following lines under respective sections
 
-```
+```text
 [BENCHMARKS]
 bench0=${PATH:TASK_DIR}/BENCHMARK/counter_new/counter.v
 
@@ -859,7 +868,6 @@ bench0_top = up_counter
 - architecture is available under `arch` directory.
 
 ![image](https://user-images.githubusercontent.com/66086031/172032968-38c3c95b-db99-430a-9e67-3687b089b132.png)
-
 
 v. Run the makefile
 
@@ -886,7 +894,8 @@ vi. View the generated files
 ### SOFA counter Timing Analysis
 
 i. Create `counter.sdc` file in the `counter_new` folder in `BENCHMARK`.
-```
+
+```sdc
 create_clock -period 20 clk
 set_input_delay -clock clk -max 0 [get_ports {*}]
 set_output_delay -clock clk -max 0 [get_ports {*}]
@@ -900,12 +909,11 @@ ii. Open `generate_testbench.openfpga` and the `counter.sdc` file in the vpr arg
 
 iii. Run the makefile command
 
-```
+```console
 make runOpenFPGA
 ```
 
 ![image](https://user-images.githubusercontent.com/66086031/172033701-095aad69-9f61-445c-bb04-e86cb4add9c9.png)
-
 
 #### SOFA counter Timing Report
 
@@ -917,14 +925,14 @@ make runOpenFPGA
 
 ![image](https://user-images.githubusercontent.com/66086031/172033802-ef8cc3f0-6981-405b-a632-a0f8e10ccea4.png)
 
-
 ### SOFA counter Post Implementation
 
 i. Add this argument in the vpr flow in the `generate_testbench.openfpga` file.
 
-```
+```console
 --gen_post_synthesis_netlist on
 ```
+
 ![image](https://user-images.githubusercontent.com/66086031/172035527-d91138a5-b998-4a65-9387-ea02e906491e.png)
 
 ii. Run makefile again
@@ -947,7 +955,7 @@ i. Change this two lines in the `task_simulation.conf` file.
 
 ii. Add this new line the `generate_testbench.openfpga` file
 
-```
+```console
 vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal \
   --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} \
   --absorb_buffer_luts off --power \
@@ -976,6 +984,7 @@ iii. Add the options for power analysis in `vpr_arch.xml` file.
 
 ## Day 5
 
+- We shall fall the same steps for the RISC - V RVMyth Core
 
 ## Acknowledgements
 
