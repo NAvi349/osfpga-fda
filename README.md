@@ -1062,6 +1062,10 @@ iii. View the `core_post_synthesis.v`
 
 ![image](https://user-images.githubusercontent.com/66086031/172057442-a12f4ee0-c1ce-4e07-90a3-793d82e56017.png)
 
+- Check the waveform using Vivado simulation. It is correct (45 = Sum of 1 to 9).
+
+![image](https://user-images.githubusercontent.com/66086031/172058278-64e223b9-f6bd-4f02-b71d-122e6f45f4ec.png)
+
 
 ## Acknowledgements
 
