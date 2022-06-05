@@ -998,11 +998,9 @@ v. See the output in `counter.power`.
 
 i. Git clone the SOFA repo as before.
 
-ii. Make these changes in the corresponding files. Also refer to the files in the Day 5 folder.
+ii. Make these changes in the corresponding files. Also refer to the files in the Day 5 folder. Comment lines 157 and 158, line 259 in the `vpr.xml`.
 
 ![image](https://user-images.githubusercontent.com/66086031/172039477-23d1c3f6-ff44-4135-8f95-cc033f403b51.png)
-
-![image](https://user-images.githubusercontent.com/66086031/172039505-66ec5bf7-8ab8-4bcf-bc41-7870c9bf283f.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/172055379-e21906be-c393-46e9-ac61-00f7dd3a7a37.png)
 
