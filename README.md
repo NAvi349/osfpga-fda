@@ -110,6 +110,7 @@ FPGA consists of Lookup Tables, Flip Flops and CLBs (Configurable Logic Blocks)
 #### FPGA Architecture
 
 - Can be used to implement any combinatorial and sequential design.
+ 
 ![image](https://user-images.githubusercontent.com/66086031/171312512-8e650388-62ec-40c5-9e9d-f9fd99baa14f.png)
 
 (Diagram taken from Course Slide for reference)
