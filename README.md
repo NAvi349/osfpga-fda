@@ -818,6 +818,16 @@ i. Run Bitstream generation.
 - Open-source FPGA IPs
 - Skywater 130nm PDK and OpenFPGA Framework
 - HD - High Density FPGAs - embedded FPGAs.
+- **Documentation and installation:** https://github.com/lnis-uofu/SOFA
+
+i. Clone the repository
+```md
+git clone https://github.com/lnis-uofu/SOFA.git
+```
+
+
+
+
 
 
 
