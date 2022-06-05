@@ -91,7 +91,7 @@
 We shall be looking at a 4-bit counter example and the RISC-V RVMyth Processor through two flows:
 
 - Vivado
-- Skywater OpenSource FPGGA (SOFA)
+- Skywater OpenSource FPGA (SOFA)
 
 #### FPGA and FPGA Architecture
 
