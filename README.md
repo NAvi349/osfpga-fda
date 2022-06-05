@@ -1049,7 +1049,19 @@ iii. Run the makefile command.
 
 ![image](https://user-images.githubusercontent.com/66086031/172056822-2d414dce-54ab-4b8a-b0a5-8b23e7b3ced4.png)
 
-###
+### SOFA RISC - V Post Implementation
+
+i. Add the required argument.
+![image](https://user-images.githubusercontent.com/66086031/172057153-d7edf08e-1dbc-4932-87f3-8a00a9930da3.png)
+
+ii. Run makefile
+
+![image](https://user-images.githubusercontent.com/66086031/172057395-4f0ac1ac-3911-47ef-bf08-06b017913dcb.png)
+
+iii. View the `core_post_synthesis.v`
+
+![image](https://user-images.githubusercontent.com/66086031/172057442-a12f4ee0-c1ce-4e07-90a3-793d82e56017.png)
+
 
 ## Acknowledgements
 
