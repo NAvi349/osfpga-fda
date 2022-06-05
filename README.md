@@ -877,13 +877,13 @@ vi. View the generated files
 
 ![image](https://user-images.githubusercontent.com/66086031/172033197-1edcad9a-59e8-4476-8890-88c9ce843de8.png)
 
-#### SOFA-Statistics
+#### SOFA counter Statistics
 
 ![image](https://user-images.githubusercontent.com/66086031/172033231-973ce382-95bc-46ec-9248-9d277e581b87.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/172033246-37bdd5cd-23e9-45b5-ae9e-e81368436eab.png)
 
-### SOFA Timing Analysis
+### SOFA counter Timing Analysis
 
 i. Create `counter.sdc` file in the `counter_new` folder in `BENCHMARK`.
 ```
@@ -907,7 +907,7 @@ make runOpenFPGA
 ![image](https://user-images.githubusercontent.com/66086031/172033701-095aad69-9f61-445c-bb04-e86cb4add9c9.png)
 
 
-#### SOFA Timing Report
+#### SOFA counter Timing Report
 
 - Setup slack
 
@@ -918,6 +918,44 @@ make runOpenFPGA
 ![image](https://user-images.githubusercontent.com/66086031/172033802-ef8cc3f0-6981-405b-a632-a0f8e10ccea4.png)
 
 
+### SOFA counter Post Implementation
+
+i. Add this argument in the vpr flow in the `generate_testbench.openfpga` file.
+
+```
+--gen_post_synthesis_netlist on
+```
+![image](https://user-images.githubusercontent.com/66086031/172035527-d91138a5-b998-4a65-9387-ea02e906491e.png)
+
+ii. Run makefile again
+
+![image](https://user-images.githubusercontent.com/66086031/172035669-0c8ac0f9-1e43-421e-bddc-af24ae3f834d.png)
+
+- post implementation file
+
+![image](https://user-images.githubusercontent.com/66086031/172035723-539b5947-e134-45b8-8a86-751de384693b.png)
+
+iii. Run simulation through vivado.
+
+![image](https://user-images.githubusercontent.com/66086031/172035990-c4288ca2-0244-48ab-b0e4-2bb2340a13f6.png)
+
+### SOFA Power Analysis
+
+i. Change this two lines in the `task_simulation.conf` file.
+
+![image](https://user-images.githubusercontent.com/66086031/172036360-bedb6b63-6496-4a35-9403-2b378f826c4f.png)
+
+ii. Add this new line the `generate_testbench.openfpga` file
+
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal \
+  --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} \
+  --absorb_buffer_luts off --power \
+  --activity_file /home/knavin2002/Desktop/openfpga/Day-4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/latest/vpr_arch/up_counter/MIN_ROUTE_CHAN_WIDTH/up_counter_ace_out.act \
+  --tech_properties /home/kunalg123/Desktop/vtr-verilog-to-routing/vtr_flow/tech/PTM_45nm/45nm.xml
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172037076-08db7d4e-965f-4571-8bac-3905e5af7782.png)
 
 ## Acknowledgements
 
