@@ -1006,8 +1006,6 @@ ii. Make these changes in the corresponding files. Also refer to the files in th
 
 ![image](https://user-images.githubusercontent.com/66086031/172055379-e21906be-c393-46e9-ac61-00f7dd3a7a37.png)
 
-![image](https://user-images.githubusercontent.com/66086031/172055398-0faa696e-4bdb-4732-a734-5799f2fa1e0c.png)
-
 ![image](https://user-images.githubusercontent.com/66086031/172055461-bdebf1ba-9f32-48b8-9928-c4259bf4f075.png)
 
 
