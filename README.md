@@ -982,6 +982,15 @@ iii. Add the options for power analysis in `vpr_arch.xml` file.
 
 ![image](https://user-images.githubusercontent.com/66086031/172037227-0380d16b-4f98-4b01-842c-cb6f8dcaf683.png)
 
+iv. Run the makefile command again.
+
+![image](https://user-images.githubusercontent.com/66086031/172051095-ca5c3613-f964-4b23-ad79-6fc9ac3fad15.png)
+
+v. See the output in `counter.power`.
+
+![Uploading image.png…]()
+
+
 ## Day 5
 
 - We shall fall the same steps for the RISC - V RVMyth Core
