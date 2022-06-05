@@ -957,6 +957,26 @@ vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal \
 
 ![image](https://user-images.githubusercontent.com/66086031/172037076-08db7d4e-965f-4571-8bac-3905e5af7782.png)
 
+iii. Add the options for power analysis in `vpr_arch.xml` file.
+
+```xml
+<!-- added for power analysis  -->
+  <power>
+      <local_interconnect C_wire="2.5e-10"/>
+      <mux_transistor_size mux_transistor_size="3"/>
+      <FF_size FF_size="4"/>
+      <LUT_transistor_size LUT_transistor_size="4"/>
+  </power>
+  <clocks>
+    <clock buffer_size="auto" C_wire="2.5e-10"/>
+  </clocks>
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172037227-0380d16b-4f98-4b01-842c-cb6f8dcaf683.png)
+
+## Day 5
+
+
 ## Acknowledgements
 
 - Dr. Xifan Tang, OpenFPGA and Chief Engineer RapidSilicon
