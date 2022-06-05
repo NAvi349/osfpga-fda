@@ -877,15 +877,45 @@ vi. View the generated files
 
 ![image](https://user-images.githubusercontent.com/66086031/172033197-1edcad9a-59e8-4476-8890-88c9ce843de8.png)
 
-vii. Results
+#### SOFA-Statistics
 
 ![image](https://user-images.githubusercontent.com/66086031/172033231-973ce382-95bc-46ec-9248-9d277e581b87.png)
 
 ![image](https://user-images.githubusercontent.com/66086031/172033246-37bdd5cd-23e9-45b5-ae9e-e81368436eab.png)
 
+### SOFA Timing Analysis
+
+i. Create `counter.sdc` file in the `counter_new` folder in `BENCHMARK`.
+```
+create_clock -period 20 clk
+set_input_delay -clock clk -max 0 [get_ports {*}]
+set_output_delay -clock clk -max 0 [get_ports {*}]
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172033441-00f9b600-a562-4d4b-9885-316518766e0c.png)
+
+ii. Open `generate_testbench.openfpga` and the `counter.sdc` file in the vpr arguments.
+
+![image](https://user-images.githubusercontent.com/66086031/172033674-e3d381a5-36fd-4038-b377-e4498f391401.png)
+
+iii. Run the makefile command
+
+```
+make runOpenFPGA
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172033701-095aad69-9f61-445c-bb04-e86cb4add9c9.png)
 
 
+#### SOFA Timing Report
 
+- Setup slack
+
+![image](https://user-images.githubusercontent.com/66086031/172033776-681bc8de-cb77-485d-a593-9ab431b4683b.png)
+
+- Hold Slack
+
+![image](https://user-images.githubusercontent.com/66086031/172033802-ef8cc3f0-6981-405b-a632-a0f8e10ccea4.png)
 
 
 
