@@ -991,7 +991,7 @@ v. See the output in `counter.power`.
 ![image](https://user-images.githubusercontent.com/66086031/172055323-9dfd4bf4-76d9-4223-a05b-ceb6254fcb0c.png)
 
 
-## Day 5
+## Day 5 SOFA RISC - V Core
 
 - We shall fall the same steps for the RISC - V RVMyth Core
 
@@ -1011,7 +1011,31 @@ iii. Run makefile command
 
 ![image](https://user-images.githubusercontent.com/66086031/172055509-a4b27623-4d82-42a8-a9f4-0cd97972e127.png)
 
+iv. Open `openfpgashell.log`.
 
+![image](https://user-images.githubusercontent.com/66086031/172056129-1b050377-e194-46ce-9353-526cfb4fc14a.png)
+
+### RISC - V Resource Utilization
+
+- Open `vpr_stdout.log` for the output statistics.
+![image](https://user-images.githubusercontent.com/66086031/172056227-528620e4-b311-46d8-9ec4-7c98e109630d.png)
+
+- Logic Elements
+![image](https://user-images.githubusercontent.com/66086031/172056253-a34ca07d-5bdb-404a-849d-8d3cfe94aa88.png)
+
+i. Create `.sdc` file
+
+```sdc
+create_clock -period 200 clk
+set_input_delay -clock clk -max 0 [get_ports {*}]
+set_output_delay -clock clk -max 0 [get_ports {*}]
+```
+
+ii. Pass the .sdc file as argument in `generate_testbench.openfpga`
+
+![image](https://user-images.githubusercontent.com/66086031/172056551-bb808a17-b372-4aaf-ae8d-14c820fd0213.png)
+
+iii. 
 
 ## Acknowledgements
 
