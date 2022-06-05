@@ -1023,6 +1023,8 @@ iv. Open `openfpgashell.log`.
 - Logic Elements
 ![image](https://user-images.githubusercontent.com/66086031/172056253-a34ca07d-5bdb-404a-849d-8d3cfe94aa88.png)
 
+### SOFA RISC - V Timing Reports
+
 i. Create `.sdc` file
 
 ```sdc
@@ -1035,7 +1037,19 @@ ii. Pass the .sdc file as argument in `generate_testbench.openfpga`
 
 ![image](https://user-images.githubusercontent.com/66086031/172056551-bb808a17-b372-4aaf-ae8d-14c820fd0213.png)
 
-iii. 
+![image](https://user-images.githubusercontent.com/66086031/172056743-8dda3f7c-32a8-4df6-a759-585db3521a62.png)
+
+iii. Run the makefile command.
+
+- Setup slack
+
+![image](https://user-images.githubusercontent.com/66086031/172056780-8ebc0d61-a503-406e-a2e4-68faf4f81bb8.png)
+
+- Hold slack
+
+![image](https://user-images.githubusercontent.com/66086031/172056822-2d414dce-54ab-4b8a-b0a5-8b23e7b3ced4.png)
+
+###
 
 ## Acknowledgements
 
