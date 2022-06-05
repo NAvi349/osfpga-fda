@@ -821,9 +821,67 @@ i. Run Bitstream generation.
 - **Documentation and installation:** https://github.com/lnis-uofu/SOFA
 
 i. Clone the repository
-```git
+
+```console
 git clone https://github.com/lnis-uofu/SOFA.git
 ```
+
+ii. Make `FPGA1212_QLSOFA_HD_PNR/` as the current directory.
+
+iii. Copy the `counter.v` file to the benchmark folder.
+
+![image](https://user-images.githubusercontent.com/66086031/172032759-1b03d407-2bad-4ae3-a1aa-e504cb29522f.png)
+
+iii. Open `task_simulation.conf`
+
+```console
+  gedit FPGA1212_QLSOFA_HD_task/config/task_simulation.conf
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172032612-005ca116-549a-4bd1-b245-2ff61a0a936f.png)
+
+iv. Add the following lines under respective sections
+
+```
+[BENCHMARKS]
+bench0=${PATH:TASK_DIR}/BENCHMARK/counter_new/counter.v
+
+[SYNTHESIS_PARAM]
+bench0_top = up_counter
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172032909-cf9edcda-4f7d-4c3c-aab5-4e5de632a1a5.png)
+
+- `generate_testbench.openfpga` will call the vpr flow
+
+![image](https://user-images.githubusercontent.com/66086031/172032941-f87a3f3f-f67f-441e-81f0-f80a7383470e.png)
+
+- architecture is available under `arch` directory.
+
+![image](https://user-images.githubusercontent.com/66086031/172032968-38c3c95b-db99-430a-9e67-3687b089b132.png)
+
+
+v. Run the makefile
+
+```console
+make runOpenFPGA
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172033156-8ca1ee9c-cfd5-4609-9a36-dc181d5313bf.png)
+
+vi. View the generated files
+
+```console
+ cd FPGA1212_QLSOFA_HD_task/latest/vpr_arch/up_counter/MIN_ROUTE_CHAN_WIDTH/
+```
+
+![image](https://user-images.githubusercontent.com/66086031/172033197-1edcad9a-59e8-4476-8890-88c9ce843de8.png)
+
+vii. Results
+
+![image](https://user-images.githubusercontent.com/66086031/172033231-973ce382-95bc-46ec-9248-9d277e581b87.png)
+
+![image](https://user-images.githubusercontent.com/66086031/172033246-37bdd5cd-23e9-45b5-ae9e-e81368436eab.png)
 
 
 
