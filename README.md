@@ -821,7 +821,7 @@ i. Run Bitstream generation.
 - **Documentation and installation:** https://github.com/lnis-uofu/SOFA
 
 i. Clone the repository
-```md
+```git
 git clone https://github.com/lnis-uofu/SOFA.git
 ```
 
