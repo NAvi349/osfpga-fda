@@ -279,7 +279,6 @@ vii. Run Elaboration
 
 viii. Do the I/O pin assignment as follows and save as `constraints.xdc` file.
 
-![image](https://user-images.githubusercontent.com/66086031/171456676-0166c665-f6ec-439f-b8ea-9f144d7cb4e1.png)
 ![image](https://user-images.githubusercontent.com/66086031/171457762-be279c03-ed55-4ecb-8c16-7d7a5545ebed.png)
 
 #### Static Timing Analysis
