@@ -1,6 +1,5 @@
 ![image](https://user-images.githubusercontent.com/66086031/172062116-d2915d85-d875-4984-8816-245c6191cb7e.png)
 
-
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -88,7 +87,7 @@
 
 #### Flow
 
-We shall be looking at a 4-bit counter example and the RISC-V RVMyth Processor through two flows:
+We shall be looking at a 4-bit counter example and the **RISC-V RVMyth Processor** through two flows:
 
 - Vivado
 - Skywater OpenSource FPGA (SOFA)
