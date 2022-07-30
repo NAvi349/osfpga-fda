@@ -151,7 +151,7 @@ An FPGA Architecture consists of
 - Basically a function can be expressed as Sum of Products form or Sum of Minterms form.
 - If we want to implement a logic function, the corresponding minterms of the function are selected by using the Mux.
 - The output of the Mux feeds into the Flip Flop.
-- A N - input Mux can be used to implement any N - input Function or some N + 1 input function with an additional NOT gate.
+- A $2^N$ - input Mux can be used to implement any N - input Function or some N + 1 input function with an additional NOT gate.
 
 <!-- ![image](https://user-images.githubusercontent.com/66086031/171421974-95cb4404-285a-4fcf-87a7-1e1e86fa5db9.png) -->
 
