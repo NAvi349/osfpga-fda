@@ -80,6 +80,8 @@
     - [SOFA RISC - V Timing Reports](#sofa-risc---v-timing-reports)
     - [SOFA RISC - V Post Implementation](#sofa-risc---v-post-implementation)
   - [Acknowledgements](#acknowledgements)
+ 
+![image](https://github.com/NAvi349/osfpga-fda/assets/66086031/84f75d44-88ce-4bff-ad5f-a52bc3525fae)
 
 ## Day 1
 
