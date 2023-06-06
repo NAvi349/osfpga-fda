@@ -81,7 +81,7 @@
     - [SOFA RISC - V Post Implementation](#sofa-risc---v-post-implementation)
   - [Acknowledgements](#acknowledgements)
  
-![image](https://github.com/NAvi349/osfpga-fda/assets/66086031/84f75d44-88ce-4bff-ad5f-a52bc3525fae)
+![image](https://github.com/NAvi349/osfpga-fda/assets/66086031/6e4d3ef9-89c3-41f8-b55e-f894f07e68ce)
 
 ## Day 1
 
